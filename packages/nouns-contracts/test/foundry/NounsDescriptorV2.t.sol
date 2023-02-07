@@ -94,7 +94,7 @@ contract NounsDescriptorV2Test is Test {
     }
 
     function testToggleDataURIWorks() public {
-        descriptor.setBaseURI('https://nouns.wtf/');
+        descriptor.setBaseURI('https://unouns.wtf/');
         _makeArtGettersNotRevert();
         vm.mockCall(
             address(renderer),
@@ -103,7 +103,7 @@ contract NounsDescriptorV2Test is Test {
         );
 
         descriptor.toggleDataURIEnabled();
-        assertEq(descriptor.tokenURI(42, INounsSeeder.Seed(0, 0, 0, 0, 0)), 'https://nouns.wtf/42');
+        assertEq(descriptor.tokenURI(42, INounsSeeder.Seed(0, 0, 0, 0, 0)), 'https://unouns.wtf/42');
 
         descriptor.toggleDataURIEnabled();
         assertEq(
@@ -117,7 +117,7 @@ contract NounsDescriptorV2Test is Test {
                                 '{"name":"',
                                 'Noun 42',
                                 '", "description":"',
-                                'Noun 42 is a member of the Nouns DAO',
+                                'Noun 42 is a member of the UNouns DAO',
                                 '", "image": "',
                                 'data:image/svg+xml;base64,',
                                 Base64.encode(bytes('mock svg')),
@@ -509,7 +509,7 @@ contract NounsDescriptorV2WithRealArtTest is DeployUtils {
         strings.slice memory imageSlice = imageDecoded.toSlice();
 
         assertEq(json.readString('.name'), 'Noun 0');
-        assertEq(json.readString('.description'), 'Noun 0 is a member of the Nouns DAO');
+        assertEq(json.readString('.description'), 'Noun 0 is a member of the UNouns DAO');
         assertEq(bytes(imageDecoded).length, 6849);
         assertTrue(
             imageSlice.startsWith(

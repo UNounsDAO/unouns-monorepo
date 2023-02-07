@@ -30,7 +30,7 @@ describe('NounsDescriptor', () => {
 
     for (const [l, layer] of Object.entries(ImageData.images)) {
       for (const [i, item] of layer.entries()) {
-        if (item.data.length > longest[l].length) {
+        if (longest[l] != undefined && item.data.length > longest[l].length) {
           longest[l] = {
             length: item.data.length,
             index: i,
@@ -88,8 +88,8 @@ describe('NounsDescriptor', () => {
           'ascii',
         ),
       );
-      expect(name).to.equal(`Noun ${i}`);
-      expect(description).to.equal(`Noun ${i} is a member of the Nouns DAO`);
+      expect(name).to.equal(`UNoun ${i}`);
+      expect(description).to.equal(`UNoun ${i} is a member of the UNouns DAO`);
       expect(image).to.not.be.undefined;
 
       appendFileSync(

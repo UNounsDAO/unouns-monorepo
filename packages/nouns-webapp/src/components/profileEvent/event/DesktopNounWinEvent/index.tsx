@@ -16,7 +16,7 @@ interface DesktopNounWinEventProps {
 const DesktopNounWinEvent: React.FC<DesktopNounWinEventProps> = props => {
   const { event } = props;
 
-  const isNounderNoun = parseInt(event.nounId as string) % 10 === 0;
+  const isNounderNoun = parseInt(event.unounId as string) % 10 === 0;
   return (
     <DesktopNounActivityRow
       icon={
@@ -36,7 +36,7 @@ const DesktopNounWinEvent: React.FC<DesktopNounWinEventProps> = props => {
           />
           {isNounderNoun ? (
             <Trans>
-              <span className={classes.bold}> Noun {event.nounId} </span> sent to{' '}
+              <span className={classes.bold}> UNoun {event.unounId} </span> sent to{' '}
               <span
                 data-tip={`View on Etherscan`}
                 onClick={() => window.open(buildEtherscanAddressLink(event.winner), '_blank')}
@@ -49,7 +49,7 @@ const DesktopNounWinEvent: React.FC<DesktopNounWinEventProps> = props => {
             </Trans>
           ) : (
             <Trans>
-              <span className={classes.bold}> Noun {event.nounId} </span> won by{' '}
+              <span className={classes.bold}> UNoun {event.unounId} </span> won by{' '}
               <span
                 data-tip={`View on Etherscan`}
                 onClick={() => window.open(buildEtherscanAddressLink(event.winner), '_blank')}

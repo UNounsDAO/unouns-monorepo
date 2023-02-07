@@ -27,7 +27,7 @@ const ExplorePage: React.FC<ExplorePageProps> = props => {
 
   // Get number of nouns in existence
   const currentAuction: IAuction | undefined = useAppSelector(state => state.auction.activeAuction);
-  const nounCount = currentAuction ? BigNumber.from(currentAuction?.nounId).toNumber() + 1 : -1;
+  const nounCount = currentAuction ? BigNumber.from(currentAuction?.unounId).toNumber() + 1 : -1;
 
   // Set state
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(!isMobile && true);
@@ -88,15 +88,15 @@ const ExplorePage: React.FC<ExplorePageProps> = props => {
     }
   };
 
-  const handleScrollTo = (nounId: number) => {
+  const handleScrollTo = (unounId: number) => {
     setIsNounHoverDisabled(true);
-    nounId && buttonsRef.current[nounId]?.scrollIntoView({ behavior: 'smooth' });
+    unounId && buttonsRef.current[unounId]?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleFocusNoun = (nounId: number) => {
-    nounId >= 0 && buttonsRef.current[nounId]?.focus();
-    setActiveNoun(nounId);
-    setSelectedNoun(nounId);
+  const handleFocusNoun = (unounId: number) => {
+    unounId >= 0 && buttonsRef.current[unounId]?.focus();
+    setActiveNoun(unounId);
+    setSelectedNoun(unounId);
     setIsSidebarVisible(true);
     if (isMobile) {
       const body = document.body;
@@ -158,8 +158,8 @@ const ExplorePage: React.FC<ExplorePageProps> = props => {
   useEffect(() => {
     if (nounCount >= 0) {
       // get latest noun id, then replace loading sidebar state with latest noun
-      !isMobile && setSelectedNoun(BigNumber.from(currentAuction?.nounId).toNumber());
-      !isMobile && setActiveNoun(BigNumber.from(currentAuction?.nounId).toNumber());
+      !isMobile && setSelectedNoun(BigNumber.from(currentAuction?.unounId).toNumber());
+      !isMobile && setActiveNoun(BigNumber.from(currentAuction?.unounId).toNumber());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nounCount]);
@@ -219,7 +219,7 @@ const ExplorePage: React.FC<ExplorePageProps> = props => {
               handleCloseDetail={() => handleCloseDetail()}
               handleNounNavigation={handleNounNavigation}
               noun={[...nounsList].reverse()[activeNoun]}
-              nounId={activeNoun}
+              unounId={activeNoun}
               nounCount={nounCount}
               selectedNoun={selectedNoun}
               isVisible={isSidebarVisible}

@@ -15,14 +15,14 @@ import { getNounBirthday } from '../NounInfoRowBirthday';
 import clsx from 'clsx';
 
 interface NounHoverCardProps {
-  nounId: string;
+  unounId: string;
 }
 
 const NounHoverCard: React.FC<NounHoverCardProps> = props => {
-  const { nounId } = props;
+  const { unounId } = props;
 
-  const { loading, error, data } = useQuery(nounQuery(nounId), {
-    skip: nounId === null,
+  const { loading, error, data } = useQuery(nounQuery(unounId), {
+    skip: unounId === null,
   });
 
   const pastAuctions = useAppSelector(state => state.pastAuctions.pastAuctions);
@@ -30,7 +30,7 @@ const NounHoverCard: React.FC<NounHoverCardProps> = props => {
     return <></>;
   }
 
-  if (loading || !data || !nounId) {
+  if (loading || !data || !unounId) {
     return (
       <div className={classes.spinnerWrapper}>
         <div className={classes.spinner}>
@@ -39,8 +39,8 @@ const NounHoverCard: React.FC<NounHoverCardProps> = props => {
       </div>
     );
   }
-  const numericNounId = parseInt(nounId);
-  const nounIdForQuery = isNounderNoun(BigNumber.from(nounId)) ? numericNounId + 1 : numericNounId;
+  const numericUNounId = parseInt(unounId);
+  const nounIdForQuery = isNounderNoun(BigNumber.from(unounId)) ? numericUNounId + 1 : numericUNounId;
   const startTime = getNounBirthday(nounIdForQuery, pastAuctions);
 
   if (error || !startTime) {
@@ -53,10 +53,10 @@ const NounHoverCard: React.FC<NounHoverCardProps> = props => {
       {/* First Row */}
       <div className={classes.titleWrapper}>
         <div className={classes.nounWrapper}>
-          <StandaloneNounCircular nounId={BigNumber.from(nounId)} />
+          <StandaloneNounCircular unounId={BigNumber.from(unounId)} />
         </div>
         <div>
-          <h1>Noun {nounId}</h1>
+          <h1>UNoun {unounId}</h1>
         </div>
       </div>
 

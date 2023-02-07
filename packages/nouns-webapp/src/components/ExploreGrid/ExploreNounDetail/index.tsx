@@ -19,7 +19,7 @@ type Noun = {
   imgSrc: string | undefined;
 };
 interface ExploreNounDetailProps {
-  nounId: number;
+  unounId: number;
   noun: Noun;
   nounCount: number;
   handleCloseDetail: Function;
@@ -42,8 +42,9 @@ const ExploreNounDetail: React.FC<ExploreNounDetailProps> = props => {
   const seed = useNounSeed(seedId);
   const bgcolors = ['#d5d7e1', '#e1d7d5'];
   const backgroundColor = seed ? bgcolors[seed.background] : bgcolors[0];
-  const nounId = props.noun && props.noun.id != null && props.noun.id >= 0 ? props.noun.id : null;
+  const unounId = props.noun && props.noun.id != null && props.noun.id >= 0 ? props.noun.id : null;
 
+  console.log(`<ExploreNounDetail> props:${JSON.stringify(props)}`)
   const isMobile: boolean = width <= 991;
   const handleWindowSizeChange = () => {
     setWidth(window.innerWidth);
@@ -90,7 +91,7 @@ const ExploreNounDetail: React.FC<ExploreNounDetailProps> = props => {
   };
 
   const traitNames = [
-    ['cool', 'warm'],
+    ['cool', 'peace'],
     ...Object.values(ImageData.images).map(i => {
       return i.map(imageData => imageData.filename);
     }),
@@ -165,6 +166,7 @@ const ExploreNounDetail: React.FC<ExploreNounDetailProps> = props => {
     if (nounTraitsOrdered) {
       return nounTraitsOrdered;
     } else {
+      console.log(`loading noun traits. nounTraitsOrdered:${nounTraitsOrdered}`)
       return loadingNounTraits;
     }
   };
@@ -250,10 +252,10 @@ const ExploreNounDetail: React.FC<ExploreNounDetailProps> = props => {
             className={classes.detailNounImage}
             onClick={() => props.handleScrollTo(props.selectedNoun)}
           >
-            {nounId !== null && seed ? (
+            {unounId !== null && seed ? (
               <Image
-                src={props.noun.imgSrc || `https://noun.pics/${nounId}.svg`}
-                alt={`Noun ${nounId}`}
+                src={props.noun.imgSrc || `https://noun.pics/${unounId}.svg`}
+                alt={`UNoun ${unounId}`}
               />
             ) : (
               <Image src={loadingNoun} alt="Loading noun" />
@@ -273,10 +275,10 @@ const ExploreNounDetail: React.FC<ExploreNounDetailProps> = props => {
                 ←
               </button>
               <div className={classes.nounBirthday}>
-                {nounId !== null && seed ? (
+                {unounId !== null && seed ? (
                   <>
-                    <h2>Noun {nounId}</h2>
-                    <NounInfoRowBirthday nounId={nounId} />
+                    <h2>UNoun {unounId}</h2>
+                    <NounInfoRowBirthday unounId={unounId} />
                   </>
                 ) : (
                   <h2>Loading</h2>
@@ -307,7 +309,7 @@ const ExploreNounDetail: React.FC<ExploreNounDetailProps> = props => {
                         }}
                       >
                         <AnimatePresence>
-                          {nounId !== null && seed && (
+                          {unounId !== null && seed && (
                             <StandalonePart partType={partType} partIndex={part.partIndex} />
                           )}
                         </AnimatePresence>
@@ -316,7 +318,7 @@ const ExploreNounDetail: React.FC<ExploreNounDetailProps> = props => {
                       <div className={classes.description}>
                         <p className="small">
                           <AnimatePresence>
-                            {nounId !== null && seed ? (
+                            {unounId !== null && seed ? (
                               <motion.span>
                                 {traitKeyToLocalizedTraitKeyFirstLetterCapitalized(
                                   nounTraitsOrdered[index].partType,
@@ -334,7 +336,7 @@ const ExploreNounDetail: React.FC<ExploreNounDetailProps> = props => {
                         <p>
                           <strong>
                             <AnimatePresence>
-                              {nounId !== null && seed ? (
+                              {unounId !== null && seed ? (
                                 <>{nounTraitsOrdered[index].partName}</>
                               ) : (
                                 <Placeholder xs={12} animation="glow" />
@@ -347,9 +349,9 @@ const ExploreNounDetail: React.FC<ExploreNounDetailProps> = props => {
                   );
                 })}
             </ul>
-            {nounId !== null && seed && (
+            {unounId !== null && seed && (
               <p className={classes.activityLink}>
-                <a href={`/noun/${nounId}`}>
+                <a href={`/unoun/${unounId}`}>
                   <Trans>Vote history</Trans>
                 </a>
               </p>

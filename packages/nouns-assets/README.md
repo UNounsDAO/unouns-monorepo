@@ -40,7 +40,7 @@ const { parts, background } = getNounData(seed);
 import { getNounSeedFromBlockHash } from '@nouns/assets';
 
 const blockHash = '0x5014101691e81d79a2eba711e698118e1a90c9be7acb2f40d7f200134ee53e01';
-const nounId = 116;
+const unounId = 116;
 
 /**
  {
@@ -51,7 +51,7 @@ const nounId = 116;
     glasses: 15
   }
 */
-const seed = getNounSeedFromBlockHash(nounId, blockHash);
+const seed = getNounSeedFromBlockHash(unounId, blockHash);
 ```
 
 ## Examples
@@ -63,8 +63,8 @@ Generate a Noun using only a block hash, which saves calls to `NounSeeder` and `
 /**
  * For you to implement:
    - hook up providers with ether/web3.js
-   - get currently auctioned Noun Id from the NounsAuctionHouse contract
-   - add 1 to the current Noun Id to get the next Noun Id (named `nextNounId` below)
+   - get currently auctioned UNoun Id from the NounsAuctionHouse contract
+   - add 1 to the current UNoun Id to get the next UNoun Id (named `nextUNounId` below)
    - get the latest block hash from your provider (named `latestBlockHash` below)
 */
 
@@ -82,9 +82,9 @@ const { palette } = ImageData; // Used with `buildSVG``
       glasses: 15
     }
 */
-const seed = getNounSeedFromBlockHash(nextNounId, latestBlockHash);
+const seed = getNounSeedFromBlockHash(nextUNounId, latestBlockHash);
 
-/** 
+/**
  * OUTPUT:
    {
      parts: [

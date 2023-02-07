@@ -71,7 +71,7 @@ const CreateProposalPage = () => {
   );
 
   useEffect(() => {
-    if (ethNeeded !== undefined && ethNeeded !== tokenBuyerTopUpEth && totalUSDCPayment > 0) {
+    if (ethNeeded !== undefined && ethNeeded !== tokenBuyerTopUpEth) {
       const hasTokenBuyterTopTop =
         proposalTransactions.filter(txn => txn.address === config.addresses.tokenBuyer).length > 0;
 
@@ -106,7 +106,13 @@ const CreateProposalPage = () => {
 
       setTokenBuyerTopUpETH(ethNeeded ?? '0');
     }
-  }, [ethNeeded, handleAddProposalAction, handleRemoveProposalAction, proposalTransactions, tokenBuyerTopUpEth, totalUSDCPayment]);
+  }, [
+    ethNeeded,
+    handleAddProposalAction,
+    handleRemoveProposalAction,
+    proposalTransactions,
+    tokenBuyerTopUpEth,
+  ]);
 
   const handleTitleInput = useCallback(
     (title: string) => {

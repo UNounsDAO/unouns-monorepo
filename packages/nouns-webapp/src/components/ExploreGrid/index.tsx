@@ -144,7 +144,7 @@ const ExploreGrid: React.FC<ExploreGridProps> = props => {
                   props.selectedNoun !== undefined && props.setActiveNoun(props.selectedNoun)
                 }
               >
-                <ExploreGridItem nounId={noun.id} imgSrc={noun.imgSrc} />
+                <ExploreGridItem unounId={noun.id} imgSrc={noun.imgSrc} />
                 <p className={classes.nounIdOverlay}>
                   {noun.id != null ? noun.id : <Placeholder xs={12} animation="glow" />}
                 </p>

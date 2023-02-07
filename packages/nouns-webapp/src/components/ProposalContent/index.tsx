@@ -88,7 +88,7 @@ const ProposalContent: React.FC<ProposalContentProps> = props => {
                       <div>
                         <Trans>
                           This transaction was automatically added to refill the TokenBuyer.
-                          Proposers do not receive this ETH.
+                          Proposers do not recieve this ETH.
                         </Trans>
                       </div>
                     </div>

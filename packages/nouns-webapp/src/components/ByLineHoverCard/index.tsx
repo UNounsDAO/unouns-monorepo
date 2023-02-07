@@ -32,7 +32,7 @@ const ByLineHoverCard: React.FC<ByLineHoverCardProps> = props => {
     return <>Error fetching Vote info</>;
   }
 
-  const sortedNounIds = data.delegates[0].nounsRepresented
+  const sortedUNounIds = data.delegates[0].nounsRepresented
     .map((noun: { id: string }) => {
       return parseInt(noun.id);
     })
@@ -55,27 +55,27 @@ const ByLineHoverCard: React.FC<ByLineHoverCardProps> = props => {
       <div className={classes.nounsRepresented}>
         <div>
           <ScaleIcon height={15} width={15} className={classes.icon} />
-          {sortedNounIds.length === 1 ? (
+          {sortedUNounIds.length === 1 ? (
             <Trans>
-              <span>Delegated Noun: </span>
+              <span>Delegated UNoun: </span>
             </Trans>
           ) : (
             <Trans>
-              <span>Delegated Nouns: </span>
+              <span>Delegated UNouns: </span>
             </Trans>
           )}
 
-          {sortedNounIds.slice(0, MAX_NOUN_IDS_SHOWN).map((nounId: number, i: number) => {
+          {sortedUNounIds.slice(0, MAX_NOUN_IDS_SHOWN).map((unounId: number, i: number) => {
             return (
-              <span className={classes.bold} key={nounId.toString()}>
-                {nounId}
-                {i !== Math.min(MAX_NOUN_IDS_SHOWN, sortedNounIds.length) - 1 && ', '}{' '}
+              <span className={classes.bold} key={unounId.toString()}>
+                {unounId}
+                {i !== Math.min(MAX_NOUN_IDS_SHOWN, sortedUNounIds.length) - 1 && ', '}{' '}
               </span>
             );
           })}
-          {sortedNounIds.length > MAX_NOUN_IDS_SHOWN && (
+          {sortedUNounIds.length > MAX_NOUN_IDS_SHOWN && (
             <span>
-              <Trans>... and {sortedNounIds.length - MAX_NOUN_IDS_SHOWN} more</Trans>
+              <Trans>... and {sortedUNounIds.length - MAX_NOUN_IDS_SHOWN} more</Trans>
             </span>
           )}
         </div>

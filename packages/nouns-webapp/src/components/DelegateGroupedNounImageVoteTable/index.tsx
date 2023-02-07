@@ -32,7 +32,7 @@ const DelegateGruopedNounImageVoteTable: React.FC<
     const rows = 3;
     const rowLength = 4;
 
-    const paddedNounIds = shuffledDelegatedGroupedNouns
+    const paddedUNounIds = shuffledDelegatedGroupedNouns
       .map((data: { delegate: string; supportDetailed: 0 | 1 | 2; nounsRepresented: string[] }) => {
         return (
           <HoverCard
@@ -44,7 +44,7 @@ const DelegateGruopedNounImageVoteTable: React.FC<
             id="delegateVoteHoverCard"
           >
             <TightStackedCircleNouns
-              nounIds={data.nounsRepresented.map((nounId: string) => parseInt(nounId))}
+              nounIds={data.nounsRepresented.map((unounId: string) => parseInt(unounId))}
             />
           </HoverCard>
         );
@@ -60,7 +60,7 @@ const DelegateGruopedNounImageVoteTable: React.FC<
             .fill(0)
             .map((_, j) => (
               <td className={classes.nounCell} key={j}>
-                {paddedNounIds[i * rowLength + j]}
+                {paddedUNounIds[i * rowLength + j]}
               </td>
             ))}
         </tr>

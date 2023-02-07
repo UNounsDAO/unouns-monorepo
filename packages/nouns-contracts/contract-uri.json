@@ -1,8 +1,8 @@
 {
-  "name": "Nouns",
-  "description": "One Noun, every day, forever.\r\n\r\nnouns.wtf",
-  "image": "ipfs://QmNdUibRHNqX2byJLtCD3ofn65cfCtvXdQnV87wRjqWf96",
-  "external_link": "https://nouns.wtf",
+  "name": "UNouns",
+  "description": "One UNoun, every day, forever.\r\nUNouns is DAO version of United Nations\r\n\r\nunouns.wtf",
+  "image": "ipfs://Qmaw1wFT2FsY9FpGXEfNPn8pP8h9KHKuk885w2Ne1y8zC5",
+  "external_link": "https://unouns.wtf",
   "seller_fee_basis_points": 0,
   "fee_recipient": "0x0000000000000000000000000000000000000000"
 }

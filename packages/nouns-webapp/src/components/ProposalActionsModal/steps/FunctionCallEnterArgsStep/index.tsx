@@ -16,8 +16,7 @@ export enum SupportedCurrencies {
 
 const parseArguments = (abi: Interface | undefined, func: string, args: string[]) => {
   return args.map((a, i) => {
-    const type = abi?.functions[func]?.inputs?.[i].type;
-    if (type === 'tuple' || type?.endsWith('[]')) {
+    if (abi?.functions[func]?.inputs?.[i].type === 'tuple') {
       return JSON.parse(a);
     }
     return a;

@@ -13,17 +13,17 @@ const HorizontalStackedNouns: React.FC<HorizontalStackedNounsProps> = props => {
     <div className={classes.wrapper}>
       {nounIds
         .slice(0, 6)
-        .map((nounId: string, i: number) => {
+        .map((unounId: string, i: number) => {
           return (
             <div
-              key={nounId.toString()}
+              key={unounId.toString()}
               style={{
                 top: '0px',
                 left: `${25 * i}px`,
               }}
               className={classes.nounWrapper}
             >
-              <StandaloneNounCircular nounId={BigNumber.from(nounId)} border={true} />
+              <StandaloneNounCircular unounId={BigNumber.from(unounId)} border={true} />
             </div>
           );
         })

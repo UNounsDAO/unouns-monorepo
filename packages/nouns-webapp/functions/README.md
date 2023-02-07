@@ -4,7 +4,7 @@
 
 ## API Convention
 
-`https://nouns.wtf/.netlify/functions/<version>/<function name>`
+`https://unouns.wtf/.netlify/functions/<version>/<function name>`
 
 ## `V0`
 

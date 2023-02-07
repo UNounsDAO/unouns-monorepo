@@ -2,12 +2,13 @@ import { default as NounsAuctionHouseABI } from '../abi/contracts/NounsAuctionHo
 import {
   ChainId,
   ContractDeployment,
+  ContractName,
+  ContractNameDescriptorV1,
   ContractNamesDAOV2,
   DeployedContract,
 } from './types';
 import { Interface, parseUnits } from 'ethers/lib/utils';
 import { task, types } from 'hardhat/config';
-import { constants } from 'ethers';
 import promptjs from 'prompt';
 
 promptjs.colors = false;
@@ -16,19 +17,21 @@ promptjs.delimiter = '';
 
 const proxyRegistries: Record<number, string> = {
   [ChainId.Mainnet]: '0xa5409ec958c83c3f309868babaca7c86dcb077c1',
+  [ChainId.Rinkeby]: '0xf57b2c51ded3a29e6891aba85459d600256cf317',
 };
 const wethContracts: Record<number, string> = {
   [ChainId.Mainnet]: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
   [ChainId.Ropsten]: '0xc778417e063141139fce010982780140aa0cd5ab',
+  [ChainId.Rinkeby]: '0xc778417e063141139fce010982780140aa0cd5ab',
   [ChainId.Kovan]: '0xd0a1e359811322d97991e03f863a0c30c2cf029c',
   [ChainId.Goerli]: '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6',
 };
 
-const NOUNS_ART_NONCE_OFFSET = 4;
+const UNOUNS_ART_NONCE_OFFSET = 4;
 const AUCTION_HOUSE_PROXY_NONCE_OFFSET = 9;
 const GOVERNOR_N_DELEGATOR_NONCE_OFFSET = 12;
 
-task('deploy-short-times', 'Deploy all Nouns contracts with short gov times for testing')
+task('deploy-short-times', 'Deploy all UNouns contracts with short gov times for testing')
   .addFlag('autoDeploy', 'Deploy all contracts without user interaction')
   .addOptionalParam('weth', 'The WETH contract address', undefined, types.string)
   .addOptionalParam('noundersdao', 'The nounders DAO contract address', undefined, types.string)
@@ -88,11 +91,11 @@ task('deploy-short-times', 'Deploy all Nouns contracts with short gov times for 
     const [deployer] = await ethers.getSigners();
 
     // prettier-ignore
-    const proxyRegistryAddress = proxyRegistries[network.chainId] ?? constants.AddressZero;
+    const proxyRegistryAddress = proxyRegistries[network.chainId] ?? proxyRegistries[ChainId.Rinkeby];
 
     if (!args.noundersdao) {
       console.log(
-        `Nounders DAO address not provided. Setting to deployer (${deployer.address})...`,
+        `UNounders DAO address not provided. Setting to deployer (${deployer.address})...`,
       );
       args.noundersdao = deployer.address;
     }
@@ -109,7 +112,7 @@ task('deploy-short-times', 'Deploy all Nouns contracts with short gov times for 
     const nonce = await deployer.getTransactionCount();
     const expectedNounsArtAddress = ethers.utils.getContractAddress({
       from: deployer.address,
-      nonce: nonce + NOUNS_ART_NONCE_OFFSET,
+      nonce: nonce + UNOUNS_ART_NONCE_OFFSET,
     });
     const expectedAuctionHouseProxyAddress = ethers.utils.getContractAddress({
       from: deployer.address,
@@ -203,7 +206,7 @@ task('deploy-short-times', 'Deploy all Nouns contracts with short gov times for 
           const actual = deployment.NounsDAOProxyV2.address.toLowerCase();
           if (expected !== actual) {
             throw new Error(
-              `Unexpected Nouns DAO proxy address. Expected: ${expected}. Actual: ${actual}.`,
+              `Unexpected UNouns DAO proxy address. Expected: ${expected}. Actual: ${actual}.`,
             );
           }
         },

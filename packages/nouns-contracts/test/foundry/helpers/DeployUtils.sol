@@ -11,7 +11,7 @@ import { NounsDAOLogicV1 } from '../../../contracts/governance/NounsDAOLogicV1.s
 import { IProxyRegistry } from '../../../contracts/external/opensea/IProxyRegistry.sol';
 import { NounsDescriptor } from '../../../contracts/NounsDescriptor.sol';
 import { NounsSeeder } from '../../../contracts/NounsSeeder.sol';
-import { NounsToken } from '../../../contracts/NounsToken.sol';
+import { NounsToken } from '../../../contracts/UNounsToken.sol';
 import { NounsDAOProxy } from '../../../contracts/governance/NounsDAOProxy.sol';
 import { Inflator } from '../../../contracts/Inflator.sol';
 

@@ -19,8 +19,8 @@ import auction, {
   setFullAuction,
 } from './state/slices/auction';
 import onDisplayAuction, {
-  setLastAuctionNounId,
-  setOnDisplayAuctionNounId,
+  setLastAuctionUNounId,
+  setOnDisplayAuctionUNounId,
 } from './state/slices/onDisplayAuction';
 import { ApolloProvider, useQuery } from '@apollo/client';
 import { clientFactory, latestAuctionsQuery } from './wrappers/subgraph';
@@ -81,6 +81,7 @@ export type AppDispatch = typeof store.dispatch;
 
 const supportedChainURLs = {
   [ChainId.Mainnet]: createNetworkHttpUrl('mainnet'),
+  [ChainId.Rinkeby]: createNetworkHttpUrl('rinkeby'),
   [ChainId.Hardhat]: 'http://localhost:8545',
   [ChainId.Goerli]: createNetworkHttpUrl('goerli'),
 };
@@ -123,7 +124,7 @@ const ChainSubscriber: React.FC = () => {
     const createdFilter = nounsAuctionHouseContract.filters.AuctionCreated(null, null, null);
     const settledFilter = nounsAuctionHouseContract.filters.AuctionSettled(null, null, null);
     const processBidFilter = async (
-      nounId: BigNumberish,
+      unounId: BigNumberish,
       sender: string,
       value: BigNumberish,
       extended: boolean,
@@ -132,33 +133,33 @@ const ChainSubscriber: React.FC = () => {
       const timestamp = (await event.getBlock()).timestamp;
       const transactionHash = event.transactionHash;
       dispatch(
-        appendBid(reduxSafeBid({ nounId, sender, value, extended, transactionHash, timestamp })),
+        appendBid(reduxSafeBid({ unounId, sender, value, extended, transactionHash, timestamp })),
       );
     };
     const processAuctionCreated = (
-      nounId: BigNumberish,
+      unounId: BigNumberish,
       startTime: BigNumberish,
       endTime: BigNumberish,
     ) => {
       dispatch(
-        setActiveAuction(reduxSafeNewAuction({ nounId, startTime, endTime, settled: false })),
+        setActiveAuction(reduxSafeNewAuction({ unounId, startTime, endTime, settled: false })),
       );
-      const nounIdNumber = BigNumber.from(nounId).toNumber();
+      const nounIdNumber = BigNumber.from(unounId).toNumber();
       dispatch(push(nounPath(nounIdNumber)));
-      dispatch(setOnDisplayAuctionNounId(nounIdNumber));
-      dispatch(setLastAuctionNounId(nounIdNumber));
+      dispatch(setOnDisplayAuctionUNounId(nounIdNumber));
+      dispatch(setLastAuctionUNounId(nounIdNumber));
     };
-    const processAuctionExtended = (nounId: BigNumberish, endTime: BigNumberish) => {
-      dispatch(setAuctionExtended({ nounId, endTime }));
+    const processAuctionExtended = (unounId: BigNumberish, endTime: BigNumberish) => {
+      dispatch(setAuctionExtended({ unounId, endTime }));
     };
-    const processAuctionSettled = (nounId: BigNumberish, winner: string, amount: BigNumberish) => {
-      dispatch(setAuctionSettled({ nounId, amount, winner }));
+    const processAuctionSettled = (unounId: BigNumberish, winner: string, amount: BigNumberish) => {
+      dispatch(setAuctionSettled({ unounId, amount, winner }));
     };
 
     // Fetch the current auction
     const currentAuction = await nounsAuctionHouseContract.auction();
     dispatch(setFullAuction(reduxSafeAuction(currentAuction)));
-    dispatch(setLastAuctionNounId(currentAuction.nounId.toNumber()));
+    dispatch(setLastAuctionUNounId(currentAuction.unounId.toNumber()));
 
     // Fetch the previous 24 hours of bids
     const previousBids = await nounsAuctionHouseContract.queryFilter(bidFilter, 0 - BLOCKS_PER_DAY);
@@ -167,17 +168,17 @@ const ChainSubscriber: React.FC = () => {
       processBidFilter(...(event.args as [BigNumber, string, BigNumber, boolean]), event);
     }
 
-    nounsAuctionHouseContract.on(bidFilter, (nounId, sender, value, extended, event) =>
-      processBidFilter(nounId, sender, value, extended, event),
+    nounsAuctionHouseContract.on(bidFilter, (unounId, sender, value, extended, event) =>
+      processBidFilter(unounId, sender, value, extended, event),
     );
-    nounsAuctionHouseContract.on(createdFilter, (nounId, startTime, endTime) =>
-      processAuctionCreated(nounId, startTime, endTime),
+    nounsAuctionHouseContract.on(createdFilter, (unounId, startTime, endTime) =>
+      processAuctionCreated(unounId, startTime, endTime),
     );
-    nounsAuctionHouseContract.on(extendedFilter, (nounId, endTime) =>
-      processAuctionExtended(nounId, endTime),
+    nounsAuctionHouseContract.on(extendedFilter, (unounId, endTime) =>
+      processAuctionExtended(unounId, endTime),
     );
-    nounsAuctionHouseContract.on(settledFilter, (nounId, winner, amount) =>
-      processAuctionSettled(nounId, winner, amount),
+    nounsAuctionHouseContract.on(settledFilter, (unounId, winner, amount) =>
+      processAuctionSettled(unounId, winner, amount),
     );
   };
   loadState();
@@ -186,8 +187,10 @@ const ChainSubscriber: React.FC = () => {
 };
 
 const PastAuctions: React.FC = () => {
-  const latestAuctionId = useAppSelector(state => state.onDisplayAuction.lastAuctionNounId);
+  const latestAuctionId = useAppSelector(state => state.onDisplayAuction.lastAuctionUNounId);
+  console.log(`<PastAuctions> latestAuctionId:${latestAuctionId}`)
   const { data } = useQuery(latestAuctionsQuery());
+  console.log(`<PastAuctions> data: ${data}`)
   const dispatch = useAppDispatch();
 
   useEffect(() => {

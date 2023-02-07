@@ -8,11 +8,11 @@ export enum ExternalURL {
 export const externalURL = (externalURL: ExternalURL) => {
   switch (externalURL) {
     case ExternalURL.twitter:
-      return 'https://twitter.com/nounsdao';
+      return 'https://twitter.com/unouns_dao';
     case ExternalURL.notion:
-      return 'https://nouns.notion.site/Explore-Nouns-a2a9dceeb1d54e10b9cbf3f931c2266f';
+      return 'https://separate-sundial-e59.notion.site/Explorer-UNouns-4f6263dd577647aaaf2982689f9aca80';
     case ExternalURL.discourse:
-      return 'https://discourse.nouns.wtf/';
+      return 'https://discourse.unouns.wtf/';
     case ExternalURL.nounsCenter:
       return 'https://nouns.center/';
   }

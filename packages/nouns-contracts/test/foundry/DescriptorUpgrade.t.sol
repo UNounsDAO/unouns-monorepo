@@ -3,7 +3,7 @@ pragma solidity ^0.8.6;
 
 import 'forge-std/Test.sol';
 import { DeployUtils } from './helpers/DeployUtils.sol';
-import { NounsToken } from '../../contracts/NounsToken.sol';
+import { NounsToken } from '../../contracts/UNounsToken.sol';
 import { NounsDescriptor } from '../../contracts/NounsDescriptor.sol';
 import { NounsDescriptorV2 } from '../../contracts/NounsDescriptorV2.sol';
 import { NounsSeeder } from '../../contracts/NounsSeeder.sol';

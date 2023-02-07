@@ -71,15 +71,15 @@ export const getPseudorandomPart = (
 
 /**
  * Emulates the NounsSeeder.sol methodology for generating a Noun seed
- * @param nounId The Noun tokenId used to create pseudorandomness
+ * @param unounId The Noun tokenId used to create pseudorandomness
  * @param blockHash The block hash use to create pseudorandomness
  */
-export const getNounSeedFromBlockHash = (nounId: BigNumberish, blockHash: string): NounSeed => {
-  const pseudorandomness = solidityKeccak256(['bytes32', 'uint256'], [blockHash, nounId]);
+export const getNounSeedFromBlockHash = (unounId: BigNumberish, blockHash: string): NounSeed => {
+  const pseudorandomness = solidityKeccak256(['bytes32', 'uint256'], [blockHash, unounId]);
   return {
     background: getPseudorandomPart(pseudorandomness, bgcolors.length, 0),
     body: getPseudorandomPart(pseudorandomness, bodies.length, 48),
-    accessory: getPseudorandomPart(pseudorandomness, accessories.length, 96),
+    accessory: getPseudorandomPart(pseudorandomness, accessories.length, 192),
     head: getPseudorandomPart(pseudorandomness, heads.length, 144),
     glasses: getPseudorandomPart(pseudorandomness, glasses.length, 192),
   };

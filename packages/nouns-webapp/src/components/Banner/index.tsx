@@ -11,7 +11,7 @@ const Banner = () => {
       <Col lg={6}>
         <div className={classes.wrapper}>
           <h1>
-            <Trans>ONE NOUN,</Trans>
+            <Trans>ONE UNOUN,</Trans>
             <br />
             <Trans>EVERY DAY,</Trans>
             <br />
@@ -21,7 +21,7 @@ const Banner = () => {
       </Col>
       <Col lg={6}>
         <div style={{ padding: '2rem' }}>
-          <Noun imgPath={calendar_noun} alt="noun" />
+          <Noun imgPath={calendar_noun} alt="unoun" />
         </div>
       </Col>
     </Section>

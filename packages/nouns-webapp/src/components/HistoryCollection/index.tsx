@@ -9,30 +9,30 @@ import { Container, Row } from 'react-bootstrap';
 
 interface HistoryCollectionProps {
   historyCount: number;
-  latestNounId: BigNumberish;
+  latestUNounId: BigNumberish;
 }
 
 const HistoryCollection: React.FC<HistoryCollectionProps> = (props: HistoryCollectionProps) => {
-  const { historyCount, latestNounId } = props;
+  const { historyCount, latestUNounId } = props;
 
-  if (!latestNounId) return null;
+  if (!latestUNounId) return null;
 
-  const startAtZero = BigNumber.from(latestNounId).sub(historyCount).lt(0);
+  const startAtZero = BigNumber.from(latestUNounId).sub(historyCount).lt(0);
 
   let nounIds: Array<BigNumber | null> = new Array(historyCount);
   nounIds = nounIds.fill(null).map((_, i) => {
-    if (BigNumber.from(i).lt(latestNounId)) {
+    if (BigNumber.from(i).lt(latestUNounId)) {
       const index = startAtZero
         ? BigNumber.from(0)
-        : BigNumber.from(Number(latestNounId) - historyCount);
+        : BigNumber.from(Number(latestUNounId) - historyCount);
       return index.add(i);
     } else {
       return null;
     }
   });
 
-  const nounsContent = nounIds.map((nounId, i) => {
-    return !nounId ? <LoadingNoun key={i} /> : <StandaloneNoun key={i} nounId={nounId} />;
+  const nounsContent = nounIds.map((unounId, i) => {
+    return !unounId ? <LoadingNoun key={i} /> : <StandaloneNoun key={i} unounId={unounId} />;
   });
 
   return (

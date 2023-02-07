@@ -6,7 +6,7 @@ import { NounsDAOLogicSharedBaseTest } from './helpers/NounsDAOLogicSharedBase.t
 import { NounsDAOLogicV1 } from '../../contracts/governance/NounsDAOLogicV1.sol';
 import { NounsDAOLogicV2 } from '../../contracts/governance/NounsDAOLogicV2.sol';
 import { NounsDAOProxy } from '../../contracts/governance/NounsDAOProxy.sol';
-import { NounsToken } from '../../contracts/NounsToken.sol';
+import { NounsToken } from '../../contracts/UNounsToken.sol';
 import { NounsDAOExecutor } from '../../contracts/governance/NounsDAOExecutor.sol';
 import { NounsDAOStorageV1, NounsDAOStorageV2 } from '../../contracts/governance/NounsDAOInterfaces.sol';
 

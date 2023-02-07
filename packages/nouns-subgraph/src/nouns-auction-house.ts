@@ -9,18 +9,18 @@ import { Auction, Noun, Bid } from './types/schema';
 import { getOrCreateAccount } from './utils/helpers';
 
 export function handleAuctionCreated(event: AuctionCreated): void {
-  let nounId = event.params.nounId.toString();
+  let unounId = event.params.unounId.toString();
 
-  let noun = Noun.load(nounId);
+  let noun = Noun.load(unounId);
   if (noun == null) {
     log.error('[handleAuctionCreated] Noun #{} not found. Hash: {}', [
-      nounId,
+      unounId,
       event.transaction.hash.toHex(),
     ]);
     return;
   }
 
-  let auction = new Auction(nounId);
+  let auction = new Auction(unounId);
   auction.noun = noun.id;
   auction.amount = BigInt.fromI32(0);
   auction.startTime = event.params.startTime;
@@ -30,15 +30,15 @@ export function handleAuctionCreated(event: AuctionCreated): void {
 }
 
 export function handleAuctionBid(event: AuctionBid): void {
-  let nounId = event.params.nounId.toString();
+  let unounId = event.params.unounId.toString();
   let bidderAddress = event.params.sender.toHex();
 
   let bidder = getOrCreateAccount(bidderAddress);
 
-  let auction = Auction.load(nounId);
+  let auction = Auction.load(unounId);
   if (auction == null) {
     log.error('[handleAuctionBid] Auction not found for Noun #{}. Hash: {}', [
-      nounId,
+      unounId,
       event.transaction.hash.toHex(),
     ]);
     return;
@@ -61,12 +61,12 @@ export function handleAuctionBid(event: AuctionBid): void {
 }
 
 export function handleAuctionExtended(event: AuctionExtended): void {
-  let nounId = event.params.nounId.toString();
+  let unounId = event.params.unounId.toString();
 
-  let auction = Auction.load(nounId);
+  let auction = Auction.load(unounId);
   if (auction == null) {
     log.error('[handleAuctionExtended] Auction not found for Noun #{}. Hash: {}', [
-      nounId,
+      unounId,
       event.transaction.hash.toHex(),
     ]);
     return;
@@ -77,12 +77,12 @@ export function handleAuctionExtended(event: AuctionExtended): void {
 }
 
 export function handleAuctionSettled(event: AuctionSettled): void {
-  let nounId = event.params.nounId.toString();
+  let unounId = event.params.unounId.toString();
 
-  let auction = Auction.load(nounId);
+  let auction = Auction.load(unounId);
   if (auction == null) {
     log.error('[handleAuctionSettled] Auction not found for Noun #{}. Hash: {}', [
-      nounId,
+      unounId,
       event.transaction.hash.toHex(),
     ]);
     return;

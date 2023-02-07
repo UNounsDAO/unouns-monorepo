@@ -4,7 +4,7 @@ import { BigNumber } from 'ethers';
 import { StandaloneNounImage } from '../../StandaloneNoun';
 
 interface ExploreGridItemProps {
-  nounId: number | null;
+  unounId: number | null;
   imgSrc: string | undefined;
 }
 
@@ -20,7 +20,7 @@ const ExploreGridItem: React.FC<ExploreGridItemProps> = React.forwardRef(
           style={isImageLoaded ? {} : { display: 'none' }}
           onLoad={() => setIsImageLoaded(true)}
           onError={() => setIsImageError(true)}
-          alt={`Noun #${props.nounId}`}
+          alt={`Noun #${props.unounId}`}
         />
 
         {/* Show placeholder until image is loaded */}
@@ -35,8 +35,8 @@ const ExploreGridItem: React.FC<ExploreGridItemProps> = React.forwardRef(
         </div>
 
         {/* If image can't be loaded, fetch Noun image internally */}
-        {isImageError && props.nounId && (
-          <StandaloneNounImage nounId={BigNumber.from(props.nounId)} />
+        {isImageError && props.unounId && (
+          <StandaloneNounImage unounId={BigNumber.from(props.unounId)} />
         )}
       </>
     );

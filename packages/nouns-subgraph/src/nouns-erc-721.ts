@@ -10,9 +10,9 @@ import { BIGINT_ONE, BIGINT_ZERO, ZERO_ADDRESS } from './utils/constants';
 import { getGovernanceEntity, getOrCreateDelegate, getOrCreateAccount } from './utils/helpers';
 
 export function handleNounCreated(event: NounCreated): void {
-  let nounId = event.params.tokenId.toString();
+  let unounId = event.params.tokenId.toString();
 
-  let seed = new Seed(nounId);
+  let seed = new Seed(unounId);
   seed.background = event.params.seed.background;
   seed.body = event.params.seed.body;
   seed.accessory = event.params.seed.accessory;
@@ -20,10 +20,10 @@ export function handleNounCreated(event: NounCreated): void {
   seed.glasses = event.params.seed.glasses;
   seed.save();
 
-  let noun = Noun.load(nounId);
+  let noun = Noun.load(unounId);
   if (noun == null) {
     log.error('[handleNounCreated] Noun #{} not found. Hash: {}', [
-      nounId,
+      unounId,
       event.transaction.hash.toHex(),
     ]);
     return;
@@ -96,15 +96,15 @@ export function handleDelegateVotesChanged(event: DelegateVotesChanged): void {
   governance.save();
 }
 
-let transferredNounId: string; // Use WebAssembly global due to lack of closure support
+let transferredUNounId: string; // Use WebAssembly global due to lack of closure support
 export function handleTransfer(event: Transfer): void {
   let fromHolder = getOrCreateAccount(event.params.from.toHexString());
   let toHolder = getOrCreateAccount(event.params.to.toHexString());
   let governance = getGovernanceEntity();
-  transferredNounId = event.params.tokenId.toString();
+  transferredUNounId = event.params.tokenId.toString();
 
   let transferEvent = new TransferEvent(
-    event.transaction.hash.toHexString() + '_' + transferredNounId,
+    event.transaction.hash.toHexString() + '_' + transferredUNounId,
   );
   transferEvent.blockNumber = event.block.number;
   transferEvent.blockTimestamp = event.block.timestamp;
@@ -122,13 +122,13 @@ export function handleTransfer(event: Transfer): void {
     fromHolder.tokenBalanceRaw = fromHolder.tokenBalanceRaw.minus(BIGINT_ONE);
     fromHolder.tokenBalance = fromHolder.tokenBalanceRaw;
     let fromHolderNouns = fromHolder.nouns; // Re-assignment required to update array
-    fromHolder.nouns = fromHolderNouns.filter(n => n != transferredNounId);
+    fromHolder.nouns = fromHolderNouns.filter(n => n != transferredUNounId);
 
     if (fromHolder.delegate != null) {
       let fromHolderDelegate = getOrCreateDelegate(fromHolder.delegate as string);
       let fromHolderNounsRepresented = fromHolderDelegate.nounsRepresented; // Re-assignment required to update array
       fromHolderDelegate.nounsRepresented = fromHolderNounsRepresented.filter(
-        n => n != transferredNounId,
+        n => n != transferredUNounId,
       );
       fromHolderDelegate.save();
     }
@@ -178,7 +178,7 @@ export function handleTransfer(event: Transfer): void {
 
   let toHolderDelegate = getOrCreateDelegate(toHolder.delegate ? toHolder.delegate! : toHolder.id);
   let toHolderNounsRepresented = toHolderDelegate.nounsRepresented; // Re-assignment required to update array
-  toHolderNounsRepresented.push(transferredNounId);
+  toHolderNounsRepresented.push(transferredUNounId);
   toHolderDelegate.nounsRepresented = toHolderNounsRepresented;
   toHolderDelegate.save();
 
@@ -201,9 +201,9 @@ export function handleTransfer(event: Transfer): void {
     toHolder.delegate = toHolder.id;
   }
 
-  let noun = Noun.load(transferredNounId);
+  let noun = Noun.load(transferredUNounId);
   if (noun == null) {
-    noun = new Noun(transferredNounId);
+    noun = new Noun(transferredUNounId);
   }
 
   noun.owner = toHolder.id;

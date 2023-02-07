@@ -21,7 +21,7 @@ export interface Auction {
   bidder: string;
   endTime: EthersBN;
   startTime: EthersBN;
-  nounId: EthersBN;
+  unounId: EthersBN;
   settled: boolean;
 }
 
@@ -54,19 +54,19 @@ export const useAuctionMinBidIncPercentage = () => {
 
 /**
  * Computes timestamp after which a Noun could vote
- * @param nounId TokenId of Noun
+ * @param unounId TokenId of Noun
  * @returns Unix timestamp after which Noun could vote
  */
-export const useNounCanVoteTimestamp = (nounId: number) => {
-  const nextNounId = nounId + 1;
+export const useNounCanVoteTimestamp = (unounId: number) => {
+  const nextUNounId = unounId + 1;
 
-  const nextNounIdForQuery = isNounderNoun(EthersBN.from(nextNounId)) ? nextNounId + 1 : nextNounId;
+  const nextUNounIdForQuery = isNounderNoun(EthersBN.from(nextUNounId)) ? nextUNounId + 1 : nextUNounId;
 
   const pastAuctions = useAppSelector(state => state.pastAuctions.pastAuctions);
 
   const maybeNounCanVoteTimestamp = pastAuctions.find((auction: AuctionState, i: number) => {
-    const maybeNounId = auction.activeAuction?.nounId;
-    return maybeNounId ? EthersBN.from(maybeNounId).eq(EthersBN.from(nextNounIdForQuery)) : false;
+    const maybeUNounId = auction.activeAuction?.unounId;
+    return maybeUNounId ? EthersBN.from(maybeUNounId).eq(EthersBN.from(nextUNounIdForQuery)) : false;
   })?.activeAuction?.startTime;
 
   if (!maybeNounCanVoteTimestamp) {

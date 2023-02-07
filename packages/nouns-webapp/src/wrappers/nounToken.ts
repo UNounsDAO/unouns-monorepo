@@ -34,13 +34,13 @@ const isSeedValid = (seed: Record<string, any> | undefined) => {
   return hasExpectedKeys && hasValidValues;
 };
 
-export const useNounToken = (nounId: EthersBN) => {
+export const useNounToken = (unounId: EthersBN) => {
   const [noun] =
     useContractCall<[string]>({
       abi,
       address: config.addresses.nounsToken,
       method: 'dataURI',
-      args: [nounId],
+      args: [unounId],
     }) || [];
 
   if (!noun) {
@@ -82,15 +82,15 @@ const useNounSeeds = () => {
   return cachedSeeds;
 };
 
-export const useNounSeed = (nounId: EthersBN): INounSeed => {
+export const useNounSeed = (unounId: EthersBN): INounSeed => {
   const seeds = useNounSeeds();
-  const seed = seeds?.[nounId.toString()];
+  const seed = seeds?.[unounId.toString()];
   // prettier-ignore
   const request = seed ? false : {
     abi,
     address: config.addresses.nounsToken,
     method: 'seeds',
-    args: [nounId],
+    args: [unounId],
   };
   const response = useContractCall<INounSeed>(request);
   if (response) {
@@ -98,7 +98,7 @@ export const useNounSeed = (nounId: EthersBN): INounSeed => {
     if (seedCache && isSeedValid(response)) {
       const updatedSeedCache = JSON.stringify({
         ...JSON.parse(seedCache),
-        [nounId.toString()]: {
+        [unounId.toString()]: {
           accessory: response.accessory,
           background: response.background,
           body: response.body,

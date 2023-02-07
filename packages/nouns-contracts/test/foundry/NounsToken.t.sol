@@ -2,7 +2,7 @@
 pragma solidity ^0.8.6;
 
 import 'forge-std/Test.sol';
-import { NounsToken } from '../../contracts/NounsToken.sol';
+import { NounsToken } from '../../contracts/UNounsToken.sol';
 import { NounsDescriptorV2 } from '../../contracts/NounsDescriptorV2.sol';
 import { NounsSeeder } from '../../contracts/NounsSeeder.sol';
 import { IProxyRegistry } from '../../contracts/external/opensea/IProxyRegistry.sol';
@@ -23,11 +23,11 @@ contract NounsTokenTest is Test, DeployUtils {
     }
 
     function testSymbol() public {
-        assertEq(nounsToken.symbol(), 'NOUN');
+        assertEq(nounsToken.symbol(), 'UNOUN');
     }
 
     function testName() public {
-        assertEq(nounsToken.name(), 'Nouns');
+        assertEq(nounsToken.name(), 'UNouns');
     }
 
     function testMintANounToSelfAndRewardsNoundersDao() public {

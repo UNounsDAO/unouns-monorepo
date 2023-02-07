@@ -11,23 +11,23 @@ import React from 'react';
 import Tooltip from '../Tooltip';
 
 interface HolderProps {
-  nounId: number;
+  unounId: number;
   isNounders?: boolean;
 }
 
 const Holder: React.FC<HolderProps> = props => {
-  const { nounId, isNounders } = props;
+  const { unounId, isNounders } = props;
 
   const isCool = useAppSelector(state => state.application.isCoolBackground);
 
-  const { loading, error, data } = useQuery(nounQuery(nounId.toString()));
+  const { loading, error, data } = useQuery(nounQuery(unounId.toString()));
 
   if (loading) {
     return <></>;
   } else if (error) {
     return (
       <div>
-        <Trans>Failed to fetch Noun info</Trans>
+        <Trans>Failed to fetch UNoun info</Trans>
       </div>
     );
   }
@@ -53,7 +53,7 @@ const Holder: React.FC<HolderProps> = props => {
     </a>
   );
 
-  const nounderNounContent = 'nounders.eth';
+  const nounderNounContent = 'unounders.eth';
 
   return (
     <>

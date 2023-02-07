@@ -233,12 +233,12 @@ export const latestBidsQuery = (first: number = 10) => gql`
 		settled
 	  }
 	}
-  }  
+  }
 `;
 
-export const nounVotingHistoryQuery = (nounId: number, first = 1_000) => gql`
+export const nounVotingHistoryQuery = (unounId: number, first = 1_000) => gql`
 {
-	noun(id: ${nounId}) {
+	noun(id: ${unounId}) {
 		id
 		votes(first: ${first}) {
       blockNumber
@@ -255,9 +255,9 @@ export const nounVotingHistoryQuery = (nounId: number, first = 1_000) => gql`
 }
 `;
 
-export const nounTransferHistoryQuery = (nounId: number, first = 1_000) => gql`
+export const nounTransferHistoryQuery = (unounId: number, first = 1_000) => gql`
 {
-  transferEvents(where: {noun: "${nounId}"}, first: ${first}) {
+  transferEvents(where: {noun: "${unounId}"}, first: ${first}) {
     id
     previousHolder {
       id
@@ -270,9 +270,9 @@ export const nounTransferHistoryQuery = (nounId: number, first = 1_000) => gql`
 }
 `;
 
-export const nounDelegationHistoryQuery = (nounId: number, first = 1_000) => gql`
+export const nounDelegationHistoryQuery = (unounId: number, first = 1_000) => gql`
 {
-  delegationEvents(where: {noun: "${nounId}"}, first: ${first}) {
+  delegationEvents(where: {noun: "${unounId}"}, first: ${first}) {
     id
     previousDelegate {
       id
@@ -302,7 +302,7 @@ export const proposalVotesQuery = (proposalId: string) => gql`
         id
       }
 
-    }	
+    }
   }
 `;
 
@@ -339,7 +339,7 @@ export const totalNounSupplyAtPropSnapshot = (proposalId: string) => gql`
 export const propUsingDynamicQuorum = (propoaslId: string) => gql`
 {
   proposal(id: "${propoaslId}") {
-    quorumCoefficient 
+    quorumCoefficient
   }
 }
 `;

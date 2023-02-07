@@ -59,11 +59,11 @@ describe('NounsToken', () => {
   });
 
   it('should set symbol', async () => {
-    expect(await nounsToken.symbol()).to.eq('NOUN');
+    expect(await nounsToken.symbol()).to.eq('UNOUN');
   });
 
   it('should set name', async () => {
-    expect(await nounsToken.name()).to.eq('Nouns');
+    expect(await nounsToken.name()).to.eq('UNouns');
   });
 
   it('should allow minter to mint a noun to itself', async () => {
@@ -114,7 +114,7 @@ describe('NounsToken', () => {
   describe('contractURI', async () => {
     it('should return correct contractURI', async () => {
       expect(await nounsToken.contractURI()).to.eq(
-        'ipfs://QmZi1n79FqWt2tTLwCqiy6nLM6xLGRsEPQ5JmReJQKNNzX',
+        'ipfs://QmYL1scY687b9AqKc8fWqQhM9s9i5TCWfujgCNXiEkqVj2',
       );
     });
     it('should allow owner to set contractURI', async () => {

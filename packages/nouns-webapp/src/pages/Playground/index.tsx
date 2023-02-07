@@ -40,14 +40,6 @@ const nounsProtocolLink = (
   />
 );
 
-const nounsAssetsLink = (
-  <Link
-    text="nouns-assets"
-    url="https://github.com/nounsDAO/nouns-monorepo/tree/master/packages/nouns-assets"
-    leavesPage={true}
-  />
-);
-
 const nounsSDKLink = (
   <Link
     text="nouns-sdk"
@@ -115,7 +107,7 @@ const Playground: React.FC = () => {
   useEffect(() => {
     const traitTitles = ['background', 'body', 'accessory', 'head', 'glasses'];
     const traitNames = [
-      ['cool', 'warm'],
+      ['cool', 'peace'],
       ...Object.values(ImageData.images).map(i => {
         return i.map(imageData => imageData.filename);
       }),
@@ -271,7 +263,7 @@ const Playground: React.FC = () => {
             <p>
               <Trans>
                 The playground was built using the {nounsProtocolLink}. Noun's traits are determined
-                by the Noun Seed. The seed was generated using {nounsAssetsLink} and rendered using
+                by the UNoun Seed. The seed was generated using unouns-assets and rendered using
                 the {nounsSDKLink}.
               </Trans>
             </p>
@@ -286,7 +278,7 @@ const Playground: React.FC = () => {
                 }}
                 className={classes.primaryBtn}
               >
-                <Trans>Generate Nouns</Trans>
+                <Trans>Generate UNouns</Trans>
               </Button>
             </Col>
             <Row>

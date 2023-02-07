@@ -19,22 +19,22 @@ const isXLScreen = window.innerWidth > 1200;
 const NounImageVoteTable: React.FC<NounImageVoteTableProps> = props => {
   const { nounIds, propId } = props;
 
-  const shuffledNounIds = pseudoRandomPredictableShuffle(nounIds, propId);
+  const shuffledUNounIds = pseudoRandomPredictableShuffle(nounIds, propId);
   const [page, setPage] = useState(0);
 
   const content = (page: number) => {
     const rows = 3;
     const rowLength = isXLScreen ? 5 : 4;
 
-    const paddedNounIds = shuffledNounIds
-      .map((nounId: string) => {
+    const paddedUNounIds = shuffledUNounIds
+      .map((unounId: string) => {
         return (
           <HoverCard
-            hoverCardContent={(tip: string) => <NounHoverCard nounId={tip} />}
-            tip={nounId.toString()}
+            hoverCardContent={(tip: string) => <NounHoverCard unounId={tip} />}
+            tip={unounId.toString()}
             id="nounHoverCard"
           >
-            <StandaloneNounCircular nounId={EthersBN.from(nounId)} />
+            <StandaloneNounCircular unounId={EthersBN.from(unounId)} />
           </HoverCard>
         );
       })
@@ -48,7 +48,7 @@ const NounImageVoteTable: React.FC<NounImageVoteTableProps> = props => {
           {Array(rowLength)
             .fill(0)
             .map((_, j) => (
-              <td key={j}>{paddedNounIds[i * rowLength + j]}</td>
+              <td key={j}>{paddedUNounIds[i * rowLength + j]}</td>
             ))}
         </tr>
       ));

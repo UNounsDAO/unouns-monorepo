@@ -1,5 +1,5 @@
 type DelegationEvent @entity {
-  "The txn hash of this event + nounId"
+  "The txn hash of this event + unounId"
   id: ID!
 
   "The Noun being delegated"

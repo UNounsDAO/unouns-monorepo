@@ -210,7 +210,7 @@ export const deployGovAndToken = async (
 
   // Deploy Delegate
   const { address: govDelegateAddress } = await new NounsDaoLogicV1Factory(deployer).deploy();
-  // Deploy Nouns token
+  // Deploy UNouns token
   const token = await deployNounsToken(deployer);
 
   // Deploy Delegator
@@ -254,7 +254,7 @@ export const deployGovV2AndToken = async (
 
   // Deploy Delegate
   const { address: govDelegateAddress } = await new NounsDaoLogicV2Factory(deployer).deploy();
-  // Deploy Nouns token
+  // Deploy UNouns token
   const token = await deployNounsToken(deployer);
 
   // Deploy Delegator
@@ -279,9 +279,9 @@ export const deployGovV2AndToken = async (
 };
 
 /**
- * Return a function used to mint `amount` Nouns on the provided `token`
- * @param token The Nouns ERC721 token
- * @param amount The number of Nouns to mint
+ * Return a function used to mint `amount` UNouns on the provided `token`
+ * @param token The UNouns ERC721 token
+ * @param amount The number of UNouns to mint
  */
 export const MintNouns = (
   token: NounsToken,
@@ -298,7 +298,7 @@ export const MintNouns = (
 };
 
 /**
- * Mints or burns tokens to target a total supply. Due to Nounders' rewards tokens may be burned and tokenIds will not be sequential
+ * Mints or burns tokens to target a total supply. Due to UNounders' rewards tokens may be burned and tokenIds will not be sequential
  */
 export const setTotalSupply = async (token: NounsToken, newTotalSupply: number): Promise<void> => {
   const totalSupply = (await token.totalSupply()).toNumber();
@@ -307,7 +307,7 @@ export const setTotalSupply = async (token: NounsToken, newTotalSupply: number):
     for (let i = 0; i < newTotalSupply - totalSupply; i++) {
       await token.mint();
     }
-    // If Nounder's reward tokens were minted totalSupply will be more than expected, so run setTotalSupply again to burn extra tokens
+    // If UNounder's reward tokens were minted totalSupply will be more than expected, so run setTotalSupply again to burn extra tokens
     await setTotalSupply(token, newTotalSupply);
   }
 

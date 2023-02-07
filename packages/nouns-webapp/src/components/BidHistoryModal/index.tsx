@@ -19,7 +19,7 @@ const BidHistoryModalOverlay: React.FC<{
 }> = props => {
   const { onDismiss, auction } = props;
 
-  const bids = useAuctionBids(auction.nounId);
+  const bids = useAuctionBids(auction.unounId);
 
   return (
     <>
@@ -33,14 +33,14 @@ const BidHistoryModalOverlay: React.FC<{
         <div className={classes.content}>
           <div className={classes.header}>
             <div className={classes.nounWrapper}>
-              <StandaloneNounRoundedCorners nounId={auction && auction.nounId} />
+              <StandaloneNounRoundedCorners unounId={auction && auction.unounId} />
             </div>
 
             <div className={classes.title}>
               <h2>
                 <Trans>Bids for</Trans>
               </h2>
-              <h1>Noun {auction && auction.nounId.toString()}</h1>
+              <h1>Noun {auction && auction.unounId.toString()}</h1>
             </div>
           </div>
           <div className={classes.bidWrapper}>

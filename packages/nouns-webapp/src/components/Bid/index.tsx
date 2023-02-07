@@ -36,7 +36,7 @@ const minBidEth = (minBid: BigNumber): string => {
   }
 
   const eth = utils.formatEther(EthersBN.from(minBid.toString()));
-  return new BigNumber(eth).toFixed(2, BigNumber.ROUND_CEIL);
+  return new BigNumber(eth).toFixed(4, BigNumber.ROUND_CEIL);
 };
 
 const currentBid = (bidInputRef: React.RefObject<HTMLInputElement>) => {
@@ -126,10 +126,10 @@ const Bid: React.FC<{
 
     const value = utils.parseEther(bidInputRef.current.value.toString());
     const contract = connectContractToSigner(nounsAuctionHouseContract, undefined, library);
-    const gasLimit = await contract.estimateGas.createBid(auction.nounId, {
+    const gasLimit = await contract.estimateGas.createBid(auction.unounId, {
       value,
     });
-    placeBid(auction.nounId, {
+    placeBid(auction.unounId, {
       value,
       gasLimit: gasLimit.add(10_000), // A 10,000 gas pad is used to avoid 'Out of gas' errors
     });

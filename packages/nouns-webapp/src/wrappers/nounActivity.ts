@@ -46,7 +46,7 @@ export type NounProfileEvent = {
 };
 
 export type NounWinEvent = {
-  nounId: string | number;
+  unounId: string | number;
   winner: string;
   transactionHash: string;
 };
@@ -59,10 +59,10 @@ export type NounProfileEventFetcherResponse = {
 
 /**
  * Fetch list of ProposalVoteEvents representing the voting history of the given Noun
- * @param nounId Id of Noun who's voting history will be fetched
+ * @param unounId Id of Noun who's voting history will be fetched
  */
-const useNounProposalVoteEvents = (nounId: number): NounProfileEventFetcherResponse => {
-  const { loading, error, data } = useQuery(nounVotingHistoryQuery(nounId));
+const useNounProposalVoteEvents = (unounId: number): NounProfileEventFetcherResponse => {
+  const { loading, error, data } = useQuery(nounVotingHistoryQuery(unounId));
 
   const {
     loading: proposalTimestampLoading,
@@ -70,7 +70,7 @@ const useNounProposalVoteEvents = (nounId: number): NounProfileEventFetcherRespo
     data: proposalCreatedTimestamps,
   } = useQuery(createTimestampAllProposals());
 
-  const nounCanVoteTimestamp = useNounCanVoteTimestamp(nounId);
+  const nounCanVoteTimestamp = useNounCanVoteTimestamp(unounId);
 
   const { data: proposals } = useAllProposals();
 
@@ -143,10 +143,10 @@ const useNounProposalVoteEvents = (nounId: number): NounProfileEventFetcherRespo
 
 /**
  * Fetch list of TransferEvents for given Noun
- * @param nounId Id of Noun who's transfer history we will fetch
+ * @param unounId Id of Noun who's transfer history we will fetch
  */
-const useNounTransferEvents = (nounId: number): NounProfileEventFetcherResponse => {
-  const { loading, error, data } = useQuery(nounTransferHistoryQuery(nounId));
+const useNounTransferEvents = (unounId: number): NounProfileEventFetcherResponse => {
+  const { loading, error, data } = useQuery(nounTransferHistoryQuery(unounId));
   if (loading) {
     return {
       loading,
@@ -187,10 +187,10 @@ const useNounTransferEvents = (nounId: number): NounProfileEventFetcherResponse 
 
 /**
  * Fetch list of DelegationEvents for given Noun
- * @param nounId Id of Noun who's transfer history we will fetch
+ * @param unounId Id of Noun who's transfer history we will fetch
  */
-const useDelegationEvents = (nounId: number): NounProfileEventFetcherResponse => {
-  const { loading, error, data } = useQuery(nounDelegationHistoryQuery(nounId));
+const useDelegationEvents = (unounId: number): NounProfileEventFetcherResponse => {
+  const { loading, error, data } = useQuery(nounDelegationHistoryQuery(unounId));
   if (loading) {
     return {
       loading,
@@ -231,24 +231,24 @@ const useDelegationEvents = (nounId: number): NounProfileEventFetcherResponse =>
 
 /**
  * Fetch list of all events for given Noun (ex: voting, transfer, delegation, etc.)
- * @param nounId Id of Noun who's history we will fetch
+ * @param unounId Id of Noun who's history we will fetch
  */
-export const useNounActivity = (nounId: number): NounProfileEventFetcherResponse => {
+export const useNounActivity = (unounId: number): NounProfileEventFetcherResponse => {
   const {
     loading: loadingVotes,
     error: votesError,
     data: votesData,
-  } = useNounProposalVoteEvents(nounId);
+  } = useNounProposalVoteEvents(unounId);
   const {
     loading: loadingNounTransfer,
     error: nounTransferError,
     data: nounTransferData,
-  } = useNounTransferEvents(nounId);
+  } = useNounTransferEvents(unounId);
   const {
     loading: loadingDelegationEvents,
     error: delegationEventsError,
     data: delegationEventsData,
-  } = useDelegationEvents(nounId);
+  } = useDelegationEvents(unounId);
 
   if (loadingDelegationEvents || loadingNounTransfer || loadingVotes) {
     return {
@@ -281,7 +281,7 @@ export const useNounActivity = (nounId: number): NounProfileEventFetcherResponse
     .sort((a: NounProfileEvent, b: NounProfileEvent) => a.blockNumber - b.blockNumber)
     .reverse();
 
-  const postProcessedEvents = events.slice(0, events.length - (nounId % 10 === 0 ? 2 : 4));
+  const postProcessedEvents = events.slice(0, events.length - (unounId % 10 === 0 ? 2 : 4));
 
   // Wrap this line in a try-catch to prevent edge case
   // where excessive spamming to left / right keys can cause transfer
@@ -290,13 +290,13 @@ export const useNounActivity = (nounId: number): NounProfileEventFetcherResponse
     // Parse noun birth + win events into a single event
     const nounTransferFromAuctionHouse = nounTransferData.sort(
       (a: NounProfileEvent, b: NounProfileEvent) => a.blockNumber - b.blockNumber,
-    )[nounId % 10 === 0 ? 0 : 1].payload as TransferEvent;
+    )[unounId % 10 === 0 ? 0 : 1].payload as TransferEvent;
     const nounTransferFromAuctionHouseBlockNumber = nounTransferData.sort(
       (a: NounProfileEvent, b: NounProfileEvent) => a.blockNumber - b.blockNumber,
-    )[nounId % 10 === 0 ? 0 : 1].blockNumber;
+    )[unounId % 10 === 0 ? 0 : 1].blockNumber;
 
     const nounWinEvent = {
-      nounId: nounId,
+      unounId: unounId,
       winner: nounTransferFromAuctionHouse.to,
       transactionHash: nounTransferFromAuctionHouse.transactionHash,
     } as NounWinEvent;

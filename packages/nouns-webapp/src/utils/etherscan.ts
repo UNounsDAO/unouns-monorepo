@@ -3,6 +3,8 @@ import { CHAIN_ID, ETHERSCAN_API_KEY } from '../config';
 
 const getBaseURL = (network: ChainId) => {
   switch (network) {
+    case ChainId.Rinkeby:
+      return 'https://rinkeby.etherscan.io/';
     case ChainId.Goerli:
       return 'https://goerli.etherscan.io/';
     default:
@@ -34,6 +36,8 @@ export const buildEtherscanHoldingsLink = (address: string): string => {
 
 const getApiBaseURL = (network: ChainId) => {
   switch (network) {
+    case ChainId.Rinkeby:
+      return `https://api-rinkeby.etherscan.io/`;
     case ChainId.Goerli:
       return 'https://api-goerli.etherscan.io/';
     default:

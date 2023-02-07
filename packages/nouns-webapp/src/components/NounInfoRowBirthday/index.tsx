@@ -12,25 +12,25 @@ import { Trans } from '@lingui/macro';
 import { i18n } from '@lingui/core';
 
 interface NounInfoRowBirthdayProps {
-  nounId: number;
+  unounId: number;
 }
 
-export const getNounBirthday = (nounId: number, pastAuctions: AuctionState[]) => {
+export const getNounBirthday = (unounId: number, pastAuctions: AuctionState[]) => {
   return BigNumber.from(
     pastAuctions.find((auction: AuctionState, i: number) => {
-      const maybeNounId = auction.activeAuction?.nounId;
-      return maybeNounId ? BigNumber.from(maybeNounId).eq(BigNumber.from(nounId)) : false;
+      const maybeUNounId = auction.activeAuction?.unounId;
+      return maybeUNounId ? BigNumber.from(maybeUNounId).eq(BigNumber.from(unounId)) : false;
     })?.activeAuction?.startTime || 0,
   );
 };
 
 const NounInfoRowBirthday: React.FC<NounInfoRowBirthdayProps> = props => {
-  const { nounId } = props;
+  const { unounId } = props;
 
-  // If the noun is a nounder noun, use the next noun to get the mint date.
+  // If the noun is a unounder noun, use the next noun to get the mint date.
   // We do this because we use the auction start time to get the mint date and
-  // nounder nouns do not have an auction start time.
-  const nounIdForQuery = isNounderNoun(BigNumber.from(nounId)) ? nounId + 1 : nounId;
+  // unounder nouns do not have an auction start time.
+  const nounIdForQuery = isNounderNoun(BigNumber.from(unounId)) ? unounId + 1 : unounId;
 
   const pastAuctions = useAppSelector(state => state.pastAuctions.pastAuctions);
   if (!pastAuctions || !pastAuctions.length) {

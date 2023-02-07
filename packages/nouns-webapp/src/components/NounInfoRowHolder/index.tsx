@@ -15,13 +15,13 @@ import { Trans } from '@lingui/macro';
 import Tooltip from '../Tooltip';
 
 interface NounInfoRowHolderProps {
-  nounId: number;
+  unounId: number;
 }
 
 const NounInfoRowHolder: React.FC<NounInfoRowHolderProps> = props => {
-  const { nounId } = props;
+  const { unounId } = props;
   const isCool = useAppSelector(state => state.application.isCoolBackground);
-  const { loading, error, data } = useQuery(auctionQuery(nounId));
+  const { loading, error, data } = useQuery(auctionQuery(unounId));
 
   const winner = data && data.auction.bidder?.id;
 

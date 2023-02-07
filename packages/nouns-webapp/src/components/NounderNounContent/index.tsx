@@ -19,7 +19,7 @@ import { useCallback, useEffect } from 'react';
 
 const NounderNounContent: React.FC<{
   mintTimestamp: BigNumber;
-  nounId: BigNumber;
+  unounId: BigNumber;
   isFirstAuction: boolean;
   isLastAuction: boolean;
   onPrevAuctionClick: () => void;
@@ -27,7 +27,7 @@ const NounderNounContent: React.FC<{
 }> = props => {
   const {
     mintTimestamp,
-    nounId,
+    unounId,
     isFirstAuction,
     isLastAuction,
     onPrevAuctionClick,
@@ -74,7 +74,7 @@ const NounderNounContent: React.FC<{
             <AuctionActivityDateHeadline startTime={mintTimestamp} />
           </AuctionTitleAndNavWrapper>
           <Col lg={12}>
-            <AuctionActivityNounTitle nounId={nounId} />
+            <AuctionActivityNounTitle unounId={unounId} />
           </Col>
         </Row>
         <Row className={auctionActivityClasses.activityRow}>
@@ -106,10 +106,10 @@ const NounderNounContent: React.FC<{
               </Link>
               .{' '}
               <Trans>
-                For this reason, we, the project's founders (‘Nounders’) have chosen to compensate
-                ourselves with Nouns. Every 10th Noun for the first 5 years of the project will be
-                sent to our multisig (5/10), where it will be vested and distributed to individual
-                Nounders.
+                For this reason, we, the project's founders (‘UNounders’) have chosen to compensate
+                ourselves with Nouns. Every 10th UNoun for the first 5 years of the project will be
+                sent to our multisig (2/3), where it will be vested and distributed to individual
+                UNounders.
               </Trans>
             </li>
           </ul>

@@ -9,7 +9,7 @@ import { NounsDAOProxyV2 } from '../../contracts/governance/NounsDAOProxyV2.sol'
 import { NounsDAOStorageV1, NounsDAOStorageV2 } from '../../contracts/governance/NounsDAOInterfaces.sol';
 import { NounsDescriptorV2 } from '../../contracts/NounsDescriptorV2.sol';
 import { DeployUtils } from './helpers/DeployUtils.sol';
-import { NounsToken } from '../../contracts/NounsToken.sol';
+import { NounsToken } from '../../contracts/UNounsToken.sol';
 import { NounsSeeder } from '../../contracts/NounsSeeder.sol';
 import { IProxyRegistry } from '../../contracts/external/opensea/IProxyRegistry.sol';
 import { NounsDAOExecutor } from '../../contracts/governance/NounsDAOExecutor.sol';

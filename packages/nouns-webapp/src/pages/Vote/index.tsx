@@ -273,7 +273,7 @@ const VotePage = ({
   );
 
   const { delegates } = delegateSnapshot || {};
-  const delegateToNounIds = delegates?.reduce<Record<string, string[]>>((acc, curr) => {
+  const delegateToUNounIds = delegates?.reduce<Record<string, string[]>>((acc, curr) => {
     acc[curr.id] = curr?.nounsRepresented?.map(nr => nr.id) ?? [];
     return acc;
   }, {});
@@ -281,7 +281,7 @@ const VotePage = ({
   const data = voters?.votes?.map(v => ({
     delegate: v.voter.id,
     supportDetailed: v.supportDetailed,
-    nounsRepresented: delegateToNounIds?.[v.voter.id] ?? [],
+    nounsRepresented: delegateToUNounIds?.[v.voter.id] ?? [],
   }));
 
   const [showToast, setShowToast] = useState(true);

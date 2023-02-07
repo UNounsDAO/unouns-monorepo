@@ -11,7 +11,7 @@ import DesktopProfileActivityFeed from '../DesktopProfileActivityFeed';
 import MobileProfileActivityFeed from '../MobileProfileActivityFeed';
 
 interface ProfileActivityFeedProps {
-  nounId: number;
+  unounId: number;
 }
 
 interface ProposalInfo {
@@ -27,13 +27,14 @@ export interface NounVoteHistory {
 }
 
 const ProfileActivityFeed: React.FC<ProfileActivityFeedProps> = props => {
-  const { nounId } = props;
+  const { unounId } = props;
+  console.log(`<ProfileActivityFeed> unounId:${unounId}`)
 
   const MAX_EVENTS_SHOW_ABOVE_FOLD = 5;
 
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const { loading, error, data } = useNounActivity(nounId);
+  const { loading, error, data } = useNounActivity(unounId);
 
   if (loading || !data || data === undefined) {
     return (
