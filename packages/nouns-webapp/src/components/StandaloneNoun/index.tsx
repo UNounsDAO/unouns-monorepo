@@ -27,7 +27,7 @@ interface StandaloneNounWithSeedProps {
 export const getUNoun = (unounId: string | EthersBN, seed: INounSeed) => {
   const id = unounId.toString();
   const name = `UNoun ${id}`;
-  const description = `UNoun ${id} is a member of the Nouns DAO`;
+  const description = `UNoun ${id} is a member of the UNouns DAO`;
   const { parts, background } = getNounData(seed);
   const image = `data:image/svg+xml;base64,${btoa(buildSVG(parts, data.palette, background))}`;
 

@@ -44,7 +44,6 @@ const ExploreNounDetail: React.FC<ExploreNounDetailProps> = props => {
   const backgroundColor = seed ? bgcolors[seed.background] : bgcolors[0];
   const unounId = props.noun && props.noun.id != null && props.noun.id >= 0 ? props.noun.id : null;
 
-  console.log(`<ExploreNounDetail> props:${JSON.stringify(props)}`)
   const isMobile: boolean = width <= 991;
   const handleWindowSizeChange = () => {
     setWidth(window.innerWidth);

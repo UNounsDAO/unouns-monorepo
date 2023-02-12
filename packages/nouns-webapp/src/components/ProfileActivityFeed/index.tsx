@@ -35,9 +35,18 @@ const ProfileActivityFeed: React.FC<ProfileActivityFeedProps> = props => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const { loading, error, data } = useNounActivity(unounId);
-
+  console.log(`loading:${loading}. data:${data}`)
   if (loading || !data || data === undefined) {
-    return (
+    return               <div className={classes.nullStateCopy}>
+                <Trans>This Noun has no activity, since it was just created. Check back soon!</Trans>
+              </div>/* (<Section fullWidth={false}>
+            <Col lg={{ span: 10, offset: 1 }}></Col>
+              <div className={classes.nullStateCopy}>
+                <Trans>This Noun has no activity, since it was just created. Check back soon!</Trans>
+              </div>
+             </Col>
+    </Section>) */
+    /* return (
       <Section fullWidth={false}>
         <Col lg={{ span: 10, offset: 1 }}>
           <div className={classes.headerWrapper}>
@@ -50,7 +59,7 @@ const ProfileActivityFeed: React.FC<ProfileActivityFeedProps> = props => {
           </div>
         </Col>
       </Section>
-    );
+    ); */
   }
 
   if (error) {

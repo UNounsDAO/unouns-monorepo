@@ -36,7 +36,7 @@ const NounderNounContent: React.FC<{
 
   const isCool = useAppSelector(state => state.application.isCoolBackground);
 
-  // Page through Nouns via keyboard
+  // Page through UNouns via keyboard
   // handle what happens on key press
   const handleKeyPress = useCallback(
     event => {
@@ -102,12 +102,12 @@ const NounderNounContent: React.FC<{
             >
               <Trans>All Noun auction proceeds are sent to the</Trans>{' '}
               <Link to="/vote" className={nounContentClasses.link}>
-                <Trans>Nouns DAO</Trans>
+                <Trans>UNouns DAO</Trans>
               </Link>
               .{' '}
               <Trans>
                 For this reason, we, the project's founders (‘UNounders’) have chosen to compensate
-                ourselves with Nouns. Every 10th UNoun for the first 5 years of the project will be
+                ourselves with UNouns. Every 10th UNoun for the first 5 years of the project will be
                 sent to our multisig (2/3), where it will be vested and distributed to individual
                 UNounders.
               </Trans>
