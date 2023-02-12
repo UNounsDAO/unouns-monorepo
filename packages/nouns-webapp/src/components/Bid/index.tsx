@@ -32,7 +32,7 @@ const computeMinimumNextBid = (
 
 const minBidEth = (minBid: BigNumber): string => {
   if (minBid.isZero()) {
-    return '0.01';
+    return '0.0222';
   }
 
   const eth = utils.formatEther(EthersBN.from(minBid.toString()));
@@ -41,7 +41,7 @@ const minBidEth = (minBid: BigNumber): string => {
 
 const currentBid = (bidInputRef: React.RefObject<HTMLInputElement>) => {
   if (!bidInputRef.current || !bidInputRef.current.value) {
-    return new BigNumber(0);
+    return new BigNumber(22200000000000000);
   }
   return new BigNumber(utils.parseEther(bidInputRef.current.value).toString());
 };
@@ -274,7 +274,7 @@ const Bid: React.FC<{
             <FormControl
               className={classes.bidInput}
               type="number"
-              min="0"
+              min="22200000000000000"
               onChange={bidInputHandler}
               ref={bidInputRef}
               value={bidInput}
@@ -292,7 +292,7 @@ const Bid: React.FC<{
         ) : (
           <>
             <Col lg={12} className={classes.voteForNextNounBtnWrapper}>
-              <Button className={classes.bidBtnAuctionEnded} onClick={fomoNounsBtnOnClickHandler}>
+              <Button className={classes.bidBtnAuctionEnded} onClick={settleAuctionHandler}>
                 <Trans>Vote for the next Noun</Trans> ⌐◧-◧
               </Button>
             </Col>
