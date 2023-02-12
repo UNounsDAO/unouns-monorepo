@@ -240,11 +240,6 @@ const Bid: React.FC<{
   const isDisabled =
     placeBidState.status === 'Mining' || settleAuctionState.status === 'Mining' || !activeAccount;
 
-  const fomoNounsBtnOnClickHandler = () => {
-    // Open Fomo Nouns in a new tab
-    window.open('https://fomonouns.wtf', '_blank')?.focus();
-  };
-
   const isWalletConnected = activeAccount !== undefined;
 
   return (
@@ -293,7 +288,7 @@ const Bid: React.FC<{
           <>
             <Col lg={12} className={classes.voteForNextNounBtnWrapper}>
               <Button className={classes.bidBtnAuctionEnded} onClick={settleAuctionHandler}>
-                <Trans>Vote for the next Noun</Trans> ⌐◧-◧
+                <Trans>Mint next UNoun</Trans> ⌐◧-◧🌏
               </Button>
             </Col>
             {/* Only show force settle button if wallet connected */}
