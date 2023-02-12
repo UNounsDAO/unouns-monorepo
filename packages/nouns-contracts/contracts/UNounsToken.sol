@@ -52,6 +52,9 @@ contract NounsToken is INounsToken, Ownable, ERC721Checkpointable {
     // The unounders DAO address (creators org)
     address public unoundersDAO;
 
+    // The unouncil DAO address
+    address public unouncilDAO;
+
     // An address who has permissions to mint UNouns
     address public minter;
 
@@ -77,7 +80,7 @@ contract NounsToken is INounsToken, Ownable, ERC721Checkpointable {
     uint256 private _currentUNounId;
 
     // IPFS content hash of contract-level metadata
-    string private _contractURIHash = 'QmYL1scY687b9AqKc8fWqQhM9s9i5TCWfujgCNXiEkqVj2';
+    string private _contractURIHash = 'QmUkZiopfGBZAUZBVTAV2nfPbKttm5J7FYmXDhTXqB1sxr';
 
     // OpenSea's Proxy Registry
     IProxyRegistry public immutable proxyRegistry;
@@ -109,7 +112,7 @@ contract NounsToken is INounsToken, Ownable, ERC721Checkpointable {
     /**
      * @notice Require that the sender is the nounders DAO.
      */
-    modifier onlyNoundersDAO() {
+    modifier onlyUNoundersDAO() {
         require(msg.sender == unoundersDAO, 'Sender is not the nounders DAO');
         _;
     }
@@ -124,12 +127,14 @@ contract NounsToken is INounsToken, Ownable, ERC721Checkpointable {
 
     constructor(
         address _unoundersDAO,
+        address _unouncilDAO,
         address _minter,
         INounsDescriptorMinimal _descriptor,
         INounsSeeder _seeder,
         IProxyRegistry _proxyRegistry
     ) ERC721('UNouns', 'UNOUN') {
         unoundersDAO = _unoundersDAO;
+        unouncilDAO = _unouncilDAO;
         minter = _minter;
         descriptor = _descriptor;
         seeder = _seeder;
@@ -169,8 +174,12 @@ contract NounsToken is INounsToken, Ownable, ERC721Checkpointable {
      * @dev Call _mintTo with the to address(es).
      */
     function mint() public override onlyMinter returns (uint256) {
-        if (_currentUNounId <= 1820 && _currentUNounId % 10 == 0) {
+        if (_currentUNounId <= 1865 && _currentUNounId % 10 == 0) {
             _mintTo(unoundersDAO, _currentUNounId++);
+        }
+
+        if (_currentUNounId <= 222 && _currentUNounId % 10 == 2) {
+            _mintTo(unouncilDAO, _currentUNounId++);
         }
 
         return _mintTo(minter, _currentUNounId++);
@@ -189,7 +198,7 @@ contract NounsToken is INounsToken, Ownable, ERC721Checkpointable {
      * @dev See {IERC721Metadata-tokenURI}.
      */
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
-        require(_exists(tokenId), 'NounsToken: URI query for nonexistent token');
+        require(_exists(tokenId), 'UNounsToken: URI query for nonexistent token');
         return descriptor.tokenURI(tokenId, seeds[tokenId]);
     }
 
@@ -198,15 +207,15 @@ contract NounsToken is INounsToken, Ownable, ERC721Checkpointable {
      * with the JSON contents directly inlined.
      */
     function dataURI(uint256 tokenId) public view override returns (string memory) {
-        require(_exists(tokenId), 'NounsToken: URI query for nonexistent token');
+        require(_exists(tokenId), 'UNounsToken: URI query for nonexistent token');
         return descriptor.dataURI(tokenId, seeds[tokenId]);
     }
 
     /**
-     * @notice Set the nounders DAO.
-     * @dev Only callable by the nounders DAO when not locked.
+     * @notice Set the unounders DAO.
+     * @dev Only callable by the unounders DAO when not locked.
      */
-    function setNoundersDAO(address _unoundersDAO) external override onlyNoundersDAO {
+    function setUNoundersDAO(address _unoundersDAO) external override onlyUNoundersDAO {
         unoundersDAO = _unoundersDAO;
 
         emit NoundersDAOUpdated(_unoundersDAO);

@@ -12,12 +12,18 @@ const { expect } = chai;
 describe('NounsToken', () => {
   let nounsToken: NounsToken;
   let deployer: SignerWithAddress;
-  let noundersDAO: SignerWithAddress;
+  let unoundersDAO: SignerWithAddress;
+  let unouncilDAO: SignerWithAddress;
   let snapshotId: number;
 
   before(async () => {
-    [deployer, noundersDAO] = await ethers.getSigners();
-    nounsToken = await deployNounsToken(deployer, noundersDAO.address, deployer.address);
+    [deployer, unoundersDAO, unouncilDAO] = await ethers.getSigners();
+    nounsToken = await deployNounsToken(
+      deployer,
+      unoundersDAO.address,
+      unouncilDAO.address,
+      deployer.address,
+    );
 
     const descriptor = await nounsToken.descriptor();
 
@@ -32,12 +38,12 @@ describe('NounsToken', () => {
     await ethers.provider.send('evm_revert', [snapshotId]);
   });
 
-  it('should allow the minter to mint a noun to itself and a reward noun to the noundersDAO', async () => {
+  it('should allow the minter to mint a noun to itself and a reward noun to the unoundersDAO', async () => {
     const receipt = await (await nounsToken.mint()).wait();
 
     const [, , , noundersNounCreated, , , , ownersNounCreated] = receipt.events || [];
 
-    expect(await nounsToken.ownerOf(0)).to.eq(noundersDAO.address);
+    expect(await nounsToken.ownerOf(0)).to.eq(unoundersDAO.address);
     expect(noundersNounCreated?.event).to.eq('NounCreated');
     expect(noundersNounCreated?.args?.tokenId).to.eq(0);
     expect(noundersNounCreated?.args?.seed.length).to.equal(5);
@@ -66,18 +72,27 @@ describe('NounsToken', () => {
     expect(await nounsToken.name()).to.eq('UNouns');
   });
 
-  it('should allow minter to mint a noun to itself', async () => {
+  it('should allow minter to mint a noun to itself and unouncil for unounId = *2', async () => {
     await (await nounsToken.mint()).wait();
 
     const receipt = await (await nounsToken.mint()).wait();
     const nounCreated = receipt.events?.[3];
+    const nounCreated3 = receipt.events?.[7];
 
-    expect(await nounsToken.ownerOf(2)).to.eq(deployer.address);
+    expect(await nounsToken.ownerOf(2)).to.eq(unouncilDAO.address);
+    expect(await nounsToken.ownerOf(3)).to.eq(deployer.address);
     expect(nounCreated?.event).to.eq('NounCreated');
     expect(nounCreated?.args?.tokenId).to.eq(2);
     expect(nounCreated?.args?.seed.length).to.equal(5);
+    expect(nounCreated3?.event).to.eq('NounCreated');
+    expect(nounCreated3?.args?.tokenId).to.eq(3);
+    expect(nounCreated3?.args?.seed.length).to.equal(5);
 
     nounCreated?.args?.seed.forEach((item: EthersBN | number) => {
+      const value = typeof item !== 'number' ? item?.toNumber() : item;
+      expect(value).to.be.a('number');
+    });
+    nounCreated3?.args?.seed.forEach((item: EthersBN | number) => {
       const value = typeof item !== 'number' ? item?.toNumber() : item;
       expect(value).to.be.a('number');
     });
@@ -95,8 +110,8 @@ describe('NounsToken', () => {
 
     await expect(tx)
       .to.emit(nounsToken, 'Transfer')
-      .withArgs(constants.AddressZero, creator.address, 2);
-    await expect(tx).to.emit(nounsToken, 'Transfer').withArgs(creator.address, minter.address, 2);
+      .withArgs(constants.AddressZero, creator.address, 3);
+    await expect(tx).to.emit(nounsToken, 'Transfer').withArgs(creator.address, minter.address, 3);
   });
 
   it('should allow minter to burn a noun', async () => {
@@ -107,14 +122,14 @@ describe('NounsToken', () => {
   });
 
   it('should revert on non-minter mint', async () => {
-    const account0AsNounErc721Account = nounsToken.connect(noundersDAO);
+    const account0AsNounErc721Account = nounsToken.connect(unoundersDAO);
     await expect(account0AsNounErc721Account.mint()).to.be.reverted;
   });
 
   describe('contractURI', async () => {
     it('should return correct contractURI', async () => {
       expect(await nounsToken.contractURI()).to.eq(
-        'ipfs://QmYL1scY687b9AqKc8fWqQhM9s9i5TCWfujgCNXiEkqVj2',
+        'ipfs://QmUkZiopfGBZAUZBVTAV2nfPbKttm5J7FYmXDhTXqB1sxr',
       );
     });
     it('should allow owner to set contractURI', async () => {

@@ -32,6 +32,11 @@ const unoundersDAOAddresses: Record<number, string> = {
   [ChainId.Goerli]: '0xDEF60ef4d2a6fDE245dA5C7FB957b2CbF53F6962',
 };
 
+const unouncilDAOAddresses: Record<number, string> = {
+  [ChainId.Mainnet]: '', // note: gotta set
+  [ChainId.Goerli]: '0xb9E9061e342257074214e73a26c83746ff6c52DB',
+};
+
 const halloffameAddresses: Record<number, string> = {
   [ChainId.Mainnet]: '', // note: gotta set
   [ChainId.Goerli]: '0x2672F15DD5129099cF5C4f66b3e82E7f5589f0c3',
@@ -44,9 +49,20 @@ const GOVERNOR_N_DELEGATOR_NONCE_OFFSET = 12;
 task('deploy', 'Deploys NFTDescriptor, NounsDescriptor, NounsSeeder, and NounsToken')
   .addFlag('autoDeploy', 'Deploy all contracts without user interaction')
   .addOptionalParam('weth', 'The WETH contract address', undefined, types.string)
-  .addOptionalParam('nounsdaoTreasury', 'The nouns DAO Treasury contract address', undefined, types.string)
-  .addOptionalParam('halloffame', 'The unouns DAO no waste multisig address', undefined, types.string)
-  .addOptionalParam('unoundersdao', 'The nounders DAO contract address', undefined, types.string)
+  .addOptionalParam(
+    'nounsdaoTreasury',
+    'The nouns DAO Treasury contract address',
+    undefined,
+    types.string,
+  )
+  .addOptionalParam(
+    'halloffame',
+    'The unouns DAO no waste multisig address',
+    undefined,
+    types.string,
+  )
+  .addOptionalParam('unoundersdao', 'The unounders DAO contract address', undefined, types.string)
+  .addOptionalParam('unouncildao', 'The unouncil DAO contract address', undefined, types.string)
   .addOptionalParam(
     'auctionTimeBuffer',
     'The auction time buffer (seconds)',
@@ -56,25 +72,13 @@ task('deploy', 'Deploys NFTDescriptor, NounsDescriptor, NounsSeeder, and NounsTo
   .addOptionalParam(
     'auctionReservePrice',
     'The auction reserve price (wei)',
-    1 /* 1 wei */,
-    types.int,
-  )
-  .addOptionalParam(
-    'unoundersPercentabe',
-    'The auction proceeds share to unounders (out of 100)',
-    4 /* 4% */,
-    types.int,
-  )
-  .addOptionalParam(
-    'nounsPercentabe',
-    'The auction proceeds share to nouns DAO Treasury (out of 100)',
-    1 /* 1% */,
-    types.int,
+    '22200000000000000' /* 0.0222 ether */,
+    types.string,
   )
   .addOptionalParam(
     'auctionMinIncrementBidPercentage',
     'The auction min increment bid percentage (out of 100)',
-    2 /* 2% */,
+    10 /* 10% */,
     types.int,
   )
   .addOptionalParam(
@@ -135,6 +139,15 @@ task('deploy', 'Deploys NFTDescriptor, NounsDescriptor, NounsSeeder, and NounsTo
       }
       args.unoundersdao = unoundersDAOAddress;
     }
+    if (!args.unouncildao) {
+      const unouncilDAOAddress = unouncilDAOAddresses[network.chainId];
+      if (!unouncilDAOAddress) {
+        throw new Error(
+          `Can not auto-detect unouncil DAO multisig address on chain ${network.name}. Provide it with the --unouncildao arg.`,
+        );
+      }
+      args.unouncildao = unouncilDAOAddress;
+    }
     if (!args.weth) {
       const deployedWETHContract = wethContracts[network.chainId];
       if (!deployedWETHContract) {
@@ -163,7 +176,7 @@ task('deploy', 'Deploys NFTDescriptor, NounsDescriptor, NounsSeeder, and NounsTo
       args.halloffame = halloffameAddress;
     }
 
-    console.log(`set all params. starting contract deployment`)
+    console.log(`set all params. starting contract deployment`);
 
     const nonce = await deployer.getTransactionCount();
     const expectedNounsArtAddress = ethers.utils.getContractAddress({
@@ -199,6 +212,7 @@ task('deploy', 'Deploys NFTDescriptor, NounsDescriptor, NounsSeeder, and NounsTo
       NounsToken: {
         args: [
           args.unoundersdao,
+          args.unouncildao,
           expectedAuctionHouseProxyAddress,
           () => deployment.NounsDescriptorV2.address,
           () => deployment.NounsSeeder.address,
@@ -218,13 +232,10 @@ task('deploy', 'Deploys NFTDescriptor, NounsDescriptor, NounsSeeder, and NounsTo
               deployment.NounsToken.address,
               args.weth,
               args.nounsdaoTreasury,
-              args.unoundersdao,
               args.halloffame,
               args.auctionTimeBuffer,
               args.proceedsShareEndTime,
               args.auctionReservePrice,
-              args.unoundersPercentabe,
-              args.nounsPercentabe,
               args.auctionMinIncrementBidPercentage,
               args.auctionDuration,
             ]),

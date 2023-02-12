@@ -3,7 +3,12 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_noundersDAO",
+        "name": "_unoundersDAO",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_unouncilDAO",
         "type": "address"
       },
       {
@@ -12,7 +17,7 @@
         "type": "address"
       },
       {
-        "internalType": "contract INounsDescriptor",
+        "internalType": "contract INounsDescriptorMinimal",
         "name": "_descriptor",
         "type": "address"
       },
@@ -141,7 +146,7 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "contract INounsDescriptor",
+        "internalType": "contract INounsDescriptorMinimal",
         "name": "descriptor",
         "type": "address"
       }
@@ -528,7 +533,7 @@
     "name": "descriptor",
     "outputs": [
       {
-        "internalType": "contract INounsDescriptor",
+        "internalType": "contract INounsDescriptorMinimal",
         "name": "",
         "type": "address"
       }
@@ -735,19 +740,6 @@
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "noundersDAO",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -961,7 +953,7 @@
   {
     "inputs": [
       {
-        "internalType": "contract INounsDescriptor",
+        "internalType": "contract INounsDescriptorMinimal",
         "name": "_descriptor",
         "type": "address"
       }
@@ -987,12 +979,12 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_noundersDAO",
+        "internalType": "contract INounsSeeder",
+        "name": "_seeder",
         "type": "address"
       }
     ],
-    "name": "setNoundersDAO",
+    "name": "setSeeder",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1000,12 +992,12 @@
   {
     "inputs": [
       {
-        "internalType": "contract INounsSeeder",
-        "name": "_seeder",
+        "internalType": "address",
+        "name": "_unoundersDAO",
         "type": "address"
       }
     ],
-    "name": "setSeeder",
+    "name": "setUNoundersDAO",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1151,6 +1143,32 @@
     "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "unouncilDAO",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "unoundersDAO",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {

@@ -9,7 +9,7 @@ task('deploy-test-token', 'Deploy NounsTokenHarness given a descriptor')
   .addParam('descriptorAddress', 'Address of a deployed descriptor contractor')
   .addParam('seederAddress', 'Address of a deployed seeder contract')
   .setAction(async ({ descriptorAddress, seederAddress }, { ethers, run, network }) => {
-    const [deployer] = await ethers.getSigners();
+    const [deployer, unouncilDAO] = await ethers.getSigners();
     console.log(`Deploying from address ${deployer.address}`);
 
     const proxyRegistryAddress = '0xa5409ec958c83c3f309868babaca7c86dcb077c1';
@@ -18,6 +18,7 @@ task('deploy-test-token', 'Deploy NounsTokenHarness given a descriptor')
       await ethers.getContractFactory('NounsTokenHarness', deployer)
     ).deploy(
       deployer.address,
+      unouncilDAO.address,
       deployer.address,
       descriptorAddress,
       seederAddress,

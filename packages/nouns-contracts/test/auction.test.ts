@@ -10,7 +10,7 @@ import {
   NounsToken,
   WETH,
 } from '../typechain';
-import { deployNounsToken, deployWeth, populateDescriptorV2 } from './utils';
+import { blockTimestamp, deployNounsToken, deployWeth, populateDescriptorV2 } from './utils';
 
 chai.use(solidity);
 const { expect } = chai;
@@ -18,7 +18,6 @@ const { expect } = chai;
 describe('NounsAuctionHouse', () => {
   let nounsAuctionHouse: NounsAuctionHouse;
   let nounsToken: NounsToken;
-  let unoundersDAO: SignerWithAddress;
   let nounsDAOTreasury: SignerWithAddress;
   let halloffame: SignerWithAddress;
   let weth: WETH;
@@ -29,35 +28,30 @@ describe('NounsAuctionHouse', () => {
   let snapshotId: number;
 
   const TIME_BUFFER = 15 * 60;
-  const PROCEEDS_SHARE_END_TIME = 1832993999;
+  const PROCEEDS_SHARE_END_TIME = 1834790400; // 2028-2-22 00:00:00 (EST)
   const RESERVE_PRICE = 100;
   const MIN_INCREMENT_BID_PERCENTAGE = 5;
   const DURATION = 60 * 60 * 24;
-  const UNOUNDERS_PERCENTAPGE = 4;
-  const NOUNS_PERCENTAPGE = 1;
-
-  const oneETH = utils.parseEther('1');
+  const ETH10000 = utils.parseEther('10000');
 
   async function deploy(deployer?: SignerWithAddress) {
     const auctionHouseFactory = await ethers.getContractFactory('NounsAuctionHouse', deployer);
     return upgrades.deployProxy(auctionHouseFactory, [
       nounsToken.address,
       weth.address,
-      unoundersDAO.address,
       nounsDAOTreasury.address,
       halloffame.address,
       TIME_BUFFER,
       PROCEEDS_SHARE_END_TIME,
       RESERVE_PRICE,
-      UNOUNDERS_PERCENTAPGE,
-      NOUNS_PERCENTAPGE,
       MIN_INCREMENT_BID_PERCENTAGE,
       DURATION,
     ]) as Promise<NounsAuctionHouse>;
   }
 
   before(async () => {
-    [unoundersDAO, nounsDAOTreasury, halloffame, deployer, noundersDAO, bidderA, bidderB] = await ethers.getSigners();
+    [nounsDAOTreasury, halloffame, deployer, noundersDAO, bidderA, bidderB] =
+      await ethers.getSigners();
 
     nounsToken = await deployNounsToken(deployer, noundersDAO.address, deployer.address);
     weth = await deployWeth(deployer);
@@ -82,14 +76,11 @@ describe('NounsAuctionHouse', () => {
     const tx = nounsAuctionHouse.initialize(
       nounsToken.address,
       weth.address,
-      unoundersDAO.address,
       nounsDAOTreasury.address,
       halloffame.address,
       TIME_BUFFER,
       PROCEEDS_SHARE_END_TIME,
       RESERVE_PRICE,
-      UNOUNDERS_PERCENTAPGE,
-      NOUNS_PERCENTAPGE,
       MIN_INCREMENT_BID_PERCENTAGE,
       DURATION,
     );
@@ -118,7 +109,7 @@ describe('NounsAuctionHouse', () => {
   it('should revert if a user creates a bid for an expired auction', async () => {
     await (await nounsAuctionHouse.unpause()).wait();
 
-    await ethers.provider.send('evm_increaseTime', [60 * 60 * 25]); // Add 25 hours
+    await ethers.provider.send('evm_increaseTime', [60 * 60 * 24]); // Add 24 hours
 
     const { unounId } = await nounsAuctionHouse.auction();
     const tx = nounsAuctionHouse.connect(bidderA).createBid(unounId, {
@@ -248,7 +239,7 @@ describe('NounsAuctionHouse', () => {
       value: RESERVE_PRICE,
     });
 
-    await ethers.provider.send('evm_increaseTime', [60 * 60 * 25]); // Add 25 hours
+    await ethers.provider.send('evm_increaseTime', [60 * 60 * 24]); // Add 24 hours
     const tx = await nounsAuctionHouse.connect(bidderA).settleCurrentAndCreateNewAuction();
 
     const receipt = await tx.wait();
@@ -261,7 +252,8 @@ describe('NounsAuctionHouse', () => {
     expect(settledEvent?.args?.winner).to.equal(bidderA.address);
     expect(settledEvent?.args?.amount).to.equal(RESERVE_PRICE);
 
-    expect(createdEvent?.args?.unounId).to.equal(unounId.add(1));
+    // should be unounId = 3. since 2 will be transferred to unouncil.
+    expect(createdEvent?.args?.unounId).to.equal(unounId.add(2));
     expect(createdEvent?.args?.startTime).to.equal(timestamp);
     expect(createdEvent?.args?.endTime).to.equal(timestamp + DURATION);
   });
@@ -287,7 +279,7 @@ describe('NounsAuctionHouse', () => {
       value: RESERVE_PRICE,
     });
 
-    await ethers.provider.send('evm_increaseTime', [60 * 60 * 25]); // Add 25 hours
+    await ethers.provider.send('evm_increaseTime', [60 * 60 * 24]); // Add 24 hours
 
     await (await nounsAuctionHouse.pause()).wait();
 
@@ -303,7 +295,8 @@ describe('NounsAuctionHouse', () => {
 
     const createdEvent = receipt.events?.find(e => e.event === 'AuctionCreated');
 
-    expect(createdEvent?.args?.unounId).to.equal(unounId.add(1));
+    // should be unounId = 3. since 2 will be transferred to unouncil.
+    expect(createdEvent?.args?.unounId).to.equal(unounId.add(2));
     expect(createdEvent?.args?.startTime).to.equal(timestamp);
     expect(createdEvent?.args?.endTime).to.equal(timestamp + DURATION);
   });
@@ -319,7 +312,7 @@ describe('NounsAuctionHouse', () => {
 
     await nounsToken.setMinter(constants.AddressZero);
 
-    await ethers.provider.send('evm_increaseTime', [60 * 60 * 25]); // Add 25 hours
+    await ethers.provider.send('evm_increaseTime', [60 * 60 * 24]); // Add 24 hours
 
     const settleTx = nounsAuctionHouse.connect(bidderA).settleCurrentAndCreateNewAuction();
 
@@ -332,12 +325,12 @@ describe('NounsAuctionHouse', () => {
     expect(paused).to.equal(true);
   });
 
-  it('should transfer a Noun to hall of fame on auction settlement if no bids are received', async () => {
+  it('should transfer a UNoun to hall of fame on auction settlement if no bids are received', async () => {
     await (await nounsAuctionHouse.unpause()).wait();
 
     const { unounId } = await nounsAuctionHouse.auction();
 
-    await ethers.provider.send('evm_increaseTime', [60 * 60 * 25]); // Add 25 hours
+    await ethers.provider.send('evm_increaseTime', [60 * 60 * 24]); // Add 24 hours
 
     const tx = nounsAuctionHouse.connect(bidderA).settleCurrentAndCreateNewAuction();
 
@@ -346,52 +339,81 @@ describe('NounsAuctionHouse', () => {
       .withArgs(unounId, halloffame.address, 0);
   });
 
-  it('should finish UNouders reward and yet transfer ETH to UNouns DAO treasury and Nouns teasury when settled', async () => {
-    await (await nounsAuctionHouse.unpause()).wait();
-    await nounsAuctionHouse.finishUNoundersReward();
-    console.log(`unoundersPercentage():${await nounsAuctionHouse.unoundersPercentage()}`)
-    expect(await nounsAuctionHouse.unoundersPercentage()).to.equal(0);
-
-    await ethers.provider.send('evm_increaseTime', [60 * 60 * 25]); // Add 25 hours
-
-    await nounsAuctionHouse.connect(bidderA).settleCurrentAndCreateNewAuction();
-
-    // const auctionHouseBalance = await ethers.provider.getBalance(deployer.address) / oneETH.toNumber();
-    // const nounsDAOTreasury = await ethers.provider.getBalance(nounsDAOTreasury.address) / oneETH.toNumber();
-/*     console.log(`getBalance(deployer.address):${await ethers.provider.getBalance(deployer.address)}`)
-    console.log(`getBalance(nounsDAOTreasury.address):${await ethers.provider.getBalance(nounsDAOTreasury.address)}`)
-    expect(await ethers.provider.getBalance(deployer.address)).to.equal((100 - NOUNS_PERCENTAPGE) * (RESERVE_PRICE) * oneETH.toNumber());
-    expect(await ethers.provider.getBalance(nounsDAOTreasury.address)).to.equal(NOUNS_PERCENTAPGE * RESERVE_PRICE * oneETH.toNumber());
- */  });
-
-  it('should finish Nouns treasury proceeds share and yet transfer ETH to UNouns DAO treasury and UNounders when settled', async () => {
-    await (await nounsAuctionHouse.unpause()).wait();
-    await nounsAuctionHouse.finishUNoundersReward();
-    console.log(`unoundersPercentage():${await nounsAuctionHouse.unoundersPercentage()}`)
-    expect(await nounsAuctionHouse.unoundersPercentage()).to.equal(0);
-
-    await ethers.provider.send('evm_increaseTime', [60 * 60 * 25]); // Add 25 hours
-
-    await nounsAuctionHouse.connect(bidderA).settleCurrentAndCreateNewAuction();
-
-/*     console.log(`getBalance(deployer.address):${await ethers.provider.getBalance(deployer.address)}`)
-    console.log(`getBalance(nounsDAOTreasury.address):${await ethers.provider.getBalance(nounsDAOTreasury.address)}`)
-    expect(await ethers.provider.getBalance(deployer.address)).to.equal((100 - NOUNS_PERCENTAPGE) * (RESERVE_PRICE) * oneETH.toNumber());
-    expect(await ethers.provider.getBalance(nounsDAOTreasury.address)).to.equal(oneETH.toNumber() * NOUNS_PERCENTAPGE * RESERVE_PRICE);
- */  });
-
   it('should finish Nouns treasury proceeds share and reward to UNounders yet transfer ETH to UNouns DAO treasury when settled', async () => {
     await (await nounsAuctionHouse.unpause()).wait();
-    await nounsAuctionHouse.finishUNoundersReward();
     await nounsAuctionHouse.finishNounsDAOTreasuryShare();
-    expect(await nounsAuctionHouse.unoundersPercentage()).to.equal(0);
-    expect(await nounsAuctionHouse.nounsPercentage()).to.equal(0);
 
-    await ethers.provider.send('evm_increaseTime', [60 * 60 * 25]); // Add 25 hours
+    await ethers.provider.send('evm_increaseTime', [60 * 60 * 24]); // Add 24 hours
 
     await nounsAuctionHouse.connect(bidderA).settleCurrentAndCreateNewAuction();
+  });
 
-    // const receiveValue = BigNumber.from(NOUNS_PERCENTAPGE * RESERVE_PRICE)
-    // expect(await ethers.provider.getBalance(nounsDAOTreasury.address)).to.equal(receiveValue * oneETH);
+  it('should transfer 100% proceeds to Nouns DAO treasury when auction settled with unounId ending 88', async () => {
+    await (await nounsAuctionHouse.unpause()).wait();
+
+    for (let i = 0; i < 100; i++) {
+      const { unounId } = await nounsAuctionHouse.auction();
+      await nounsAuctionHouse.connect(bidderA).createBid(unounId, {
+        value: RESERVE_PRICE,
+      });
+      await ethers.provider.send('evm_increaseTime', [60 * 60 * 24]); // Add 24 hours
+      await nounsAuctionHouse.connect(bidderA).settleCurrentAndCreateNewAuction();
+
+      if (Number(unounId) == 88) {
+        expect(await ethers.provider.getBalance(nounsDAOTreasury.address)).to.equal(
+          ETH10000.add(RESERVE_PRICE),
+        );
+        break;
+      }
+    }
+  });
+
+  it('should finish transfering proceeds to Nouns DAO treasury when finishNounsDAOTreasuryShare executed.', async () => {
+    await (await nounsAuctionHouse.unpause()).wait();
+    await nounsAuctionHouse.finishNounsDAOTreasuryShare();
+
+    for (let i = 0; i < 100; i++) {
+      const { unounId } = await nounsAuctionHouse.auction();
+      await nounsAuctionHouse.connect(bidderA).createBid(unounId, {
+        value: RESERVE_PRICE,
+      });
+      await ethers.provider.send('evm_increaseTime', [60 * 60 * 24]); // Add 24 hours
+      await nounsAuctionHouse.connect(bidderA).settleCurrentAndCreateNewAuction();
+
+      if (Number(unounId) == 88) {
+        expect(await ethers.provider.getBalance(nounsDAOTreasury.address)).to.equal(ETH10000);
+        break;
+      }
+    }
+  });
+
+  it('should finish transfering proceeds to Nouns DAO treasury after 5 years', async () => {
+    await (await nounsAuctionHouse.unpause()).wait();
+
+    let cntTransferred = 0;
+    let sharing = true;
+    while (sharing) {
+      const { unounId, endTime } = await nounsAuctionHouse.auction();
+      await nounsAuctionHouse.connect(bidderA).createBid(unounId, {
+        value: RESERVE_PRICE,
+      });
+      await ethers.provider.send('evm_increaseTime', [60 * 60 * 24]); // Add 24 hours
+      await nounsAuctionHouse.connect(bidderA).settleCurrentAndCreateNewAuction();
+      if (unounId.toNumber() % 100 == 88) {
+        if (Number(endTime) < PROCEEDS_SHARE_END_TIME) {
+          cntTransferred++;
+          expect(await ethers.provider.getBalance(nounsDAOTreasury.address)).to.equal(
+            ETH10000.add(RESERVE_PRICE * cntTransferred),
+          );
+          await ethers.provider.send('evm_increaseTime', [60 * 60 * 24 * 365 * 6]); // Add 6 years. to 2029.
+          await nounsAuctionHouse.connect(bidderA).settleCurrentAndCreateNewAuction();
+        } else {
+          expect(await ethers.provider.getBalance(nounsDAOTreasury.address)).to.equal(
+            ETH10000.add(RESERVE_PRICE * cntTransferred),
+          );
+          sharing = false;
+        }
+      }
+    }
   });
 });

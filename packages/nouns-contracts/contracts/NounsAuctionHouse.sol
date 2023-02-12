@@ -60,10 +60,7 @@ contract NounsAuctionHouse is INounsAuctionHouse, PausableUpgradeable, Reentranc
     // The address of the WETH contract
     address public weth;
 
-    // The address of Unounders DAO
-    address public unoundersDAO;
-
-    // The address of Nouns DAO Treasury
+    // The address of Nouns DAO treasury
     address public nounsDAOTreasury;
 
     // The address of hall of fame
@@ -72,13 +69,7 @@ contract NounsAuctionHouse is INounsAuctionHouse, PausableUpgradeable, Reentranc
     // The minimum amount of time left in an auction after a new bid is created
     uint256 public timeBuffer;
 
-    // The percentage of proceeds for Nouns DAO Treasury
-    uint8 public nounsPercentage;
-
-    // The percentage of proceeds for UNounders
-    uint8 public unoundersPercentage;
-
-    // The time that unounders stops receiving rewards
+    // The time that Nouns DAO treasury stops receiving rewards
     uint256 public proceedsShareEndTime;
 
     // The minimum price accepted in an auction
@@ -102,13 +93,10 @@ contract NounsAuctionHouse is INounsAuctionHouse, PausableUpgradeable, Reentranc
         INounsToken _nouns,
         address _weth,
         address _nounsDAOTreasury,
-        address _unoundersDAO,
         address _halloffame,
         uint256 _timeBuffer,
         uint256 _proceedsShareEndTime,
         uint256 _reservePrice,
-        uint8 _unoundersPercentage,
-        uint8 _nounsPercentage,
         uint8 _minBidIncrementPercentage,
         uint256 _duration
     ) external initializer {
@@ -120,8 +108,7 @@ contract NounsAuctionHouse is INounsAuctionHouse, PausableUpgradeable, Reentranc
 
 
         require(
-            _nounsDAOTreasury != address(0) &&
-            _unoundersDAO != address(0) && _halloffame != address(0) && _weth != address(0),
+            _nounsDAOTreasury != address(0) && _halloffame != address(0) && _weth != address(0),
             "ZERO ADDRESS"
         );
         require(_reservePrice > 0, "Reserve price is zero");
@@ -130,13 +117,10 @@ contract NounsAuctionHouse is INounsAuctionHouse, PausableUpgradeable, Reentranc
         nouns = _nouns;
         weth = _weth;
         nounsDAOTreasury = _nounsDAOTreasury;
-        unoundersDAO = _unoundersDAO;
         halloffame = _halloffame;
         timeBuffer = _timeBuffer;
         proceedsShareEndTime = _proceedsShareEndTime;
         reservePrice = _reservePrice;
-        unoundersPercentage = _unoundersPercentage;
-        nounsPercentage = _nounsPercentage;
         minBidIncrementPercentage = _minBidIncrementPercentage;
         duration = _duration;
     }
@@ -206,21 +190,11 @@ contract NounsAuctionHouse is INounsAuctionHouse, PausableUpgradeable, Reentranc
     }
 
     /**
-     * @notice Finish the UNounders proceeds reward.
-     * @dev This function can only be called by the owner
-     * and finishes UNounders reward.
-     */
-    function finishUNoundersReward() external onlyOwner {
-        unoundersPercentage = 0;
-    }
-
-    /**
      * @notice Finish the proceeds share to Nouns DAO Treasury.
-     * @dev This function can only be called by the owner
-     * and finishes UNounders reward.
+     * @dev This function can only be called by the owner.
      */
     function finishNounsDAOTreasuryShare() external onlyOwner {
-        nounsPercentage = 0;
+        proceedsShareEndTime = 0;
     }
 
     /**
@@ -313,15 +287,12 @@ contract NounsAuctionHouse is INounsAuctionHouse, PausableUpgradeable, Reentranc
 
         if (_auction.amount > 0) {
             if (block.timestamp < proceedsShareEndTime) {
-                // transfer to UNouns DAO
-                _safeTransferETHWithFallback(owner(), (_auction.amount * (100 - (nounsPercentage + unoundersPercentage))) / 100);
-                // transfer to UNounders DAO
-                if (unoundersPercentage > 0) {
-                    _safeTransferETHWithFallback(unoundersDAO, (_auction.amount * unoundersPercentage) / 100);
-                }
                 // transfer to UNouns DAO Treasury
-                if (nounsPercentage > 0) {
-                    _safeTransferETHWithFallback(nounsDAOTreasury, (_auction.amount * nounsPercentage) / 100);
+                if (_auction.unounId % 100 == 88) {
+                    _safeTransferETHWithFallback(nounsDAOTreasury, _auction.amount);
+                } else {
+                    // transfer to UNouns DAO
+                    _safeTransferETHWithFallback(owner(), _auction.amount);
                 }
             } else {
                 // transfer to UNouns DAO
