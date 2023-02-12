@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Spinner } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import Section from '../../layout/Section';
 import classes from './ProfileActivityFeed.module.css';
 
@@ -37,29 +37,9 @@ const ProfileActivityFeed: React.FC<ProfileActivityFeedProps> = props => {
   const { loading, error, data } = useNounActivity(unounId);
   console.log(`loading:${loading}. data:${data}`)
   if (loading || !data || data === undefined) {
-    return               <div className={classes.nullStateCopy}>
-                <Trans>This Noun has no activity, since it was just created. Check back soon!</Trans>
-              </div>/* (<Section fullWidth={false}>
-            <Col lg={{ span: 10, offset: 1 }}></Col>
-              <div className={classes.nullStateCopy}>
-                <Trans>This Noun has no activity, since it was just created. Check back soon!</Trans>
-              </div>
-             </Col>
-    </Section>) */
-    /* return (
-      <Section fullWidth={false}>
-        <Col lg={{ span: 10, offset: 1 }}>
-          <div className={classes.headerWrapper}>
-            <h1>
-              <Trans>Activity</Trans>
-            </h1>
-            <div className={classes.spinner}>
-              <Spinner animation="border" />
+    return  <div className={classes.nullStateCopy}>
+              <Trans>This Noun has no activity, since it was just created. Check back soon!</Trans>
             </div>
-          </div>
-        </Col>
-      </Section>
-    ); */
   }
 
   if (error) {
