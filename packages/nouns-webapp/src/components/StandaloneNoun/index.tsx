@@ -133,8 +133,6 @@ export const StandaloneNounWithSeed: React.FC<StandaloneNounWithSeedProps> = (
   const dispatch = useDispatch();
   const seed = useNounSeed(unounId);
   const seedIsInvalid = Object.values(seed || {}).every(v => v === 0);
-  console.log(`<StandaloneNounWithSeed> seed:${JSON.stringify(seed)}`);
-  console.log(`<StandaloneNounWithSeed> seedIsInvalid:${seedIsInvalid}`);
 
   if (!seed || seedIsInvalid || !unounId || !onLoadSeed) return <Noun imgPath="" alt="UNoun" />;
 
