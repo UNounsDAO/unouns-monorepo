@@ -13,10 +13,11 @@ import Tooltip from '../Tooltip';
 interface WinnerProps {
   winner: string;
   isNounders?: boolean;
+  isUNouncil?: boolean;
 }
 
 const Winner: React.FC<WinnerProps> = props => {
-  const { winner, isNounders } = props;
+  const { winner, isNounders, isUNouncil } = props;
   const activeAccount = useAppSelector(state => state.account.activeAccount);
 
   const isCool = useAppSelector(state => state.application.isCoolBackground);
@@ -87,6 +88,25 @@ const Winner: React.FC<WinnerProps> = props => {
     </a>
   );
 
+  const unouncilUNounContent = (
+    <a
+      href={buildEtherscanAddressLink('unouncil.eth')}
+      target={'_blank'}
+      rel="noreferrer"
+      className={classes.link}
+    >
+      <Tooltip
+        tip="View on Etherscan"
+        tooltipContent={(tip: string) => {
+          return <Trans>View on Etherscan</Trans>;
+        }}
+        id="holder-etherscan-tooltip"
+      >
+        unouncil.eth
+      </Tooltip>
+    </a>
+  );
+
   return (
     <>
       <Row className={clsx(classes.wrapper, classes.section)}>
@@ -107,7 +127,7 @@ const Winner: React.FC<WinnerProps> = props => {
               color: isCool ? 'var(--brand-cool-dark-text)' : 'var(--brand-warm-dark-text)',
             }}
           >
-            {isNounders ? nounderNounContent : nonNounderNounContent}
+            {isNounders ? nounderNounContent : (isUNouncil ? unouncilUNounContent : nonNounderNounContent)}
           </h2>
         </Col>
       </Row>

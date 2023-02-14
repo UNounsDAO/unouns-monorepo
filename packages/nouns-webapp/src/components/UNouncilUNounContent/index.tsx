@@ -6,7 +6,7 @@ import AuctionActivityNounTitle from '../AuctionActivityNounTitle';
 import AuctionActivityDateHeadline from '../AuctionActivityDateHeadline';
 import AuctionTitleAndNavWrapper from '../AuctionTitleAndNavWrapper';
 import { Link } from 'react-router-dom';
-import nounContentClasses from './NounderNounContent.module.css';
+import nounContentClasses from './UNouncilUNounContent.module.css';
 import auctionBidClasses from '../AuctionActivity/BidHistory.module.css';
 import bidBtnClasses from '../BidHistoryBtn/BidHistoryBtn.module.css';
 import auctionActivityClasses from '../AuctionActivity/AuctionActivity.module.css';
@@ -17,7 +17,7 @@ import { Trans } from '@lingui/macro';
 import { useAppSelector } from '../../hooks';
 import { useCallback, useEffect } from 'react';
 
-const NounderNounContent: React.FC<{
+const UNouncilUNounContent: React.FC<{
   mintTimestamp: BigNumber;
   unounId: BigNumber;
   isFirstAuction: boolean;
@@ -86,7 +86,7 @@ const NounderNounContent: React.FC<{
             className={`${auctionActivityClasses.currentBidCol} ${nounContentClasses.currentBidCol} ${auctionActivityClasses.auctionTimerCol}`}
           >
             <div className={auctionActivityClasses.section}>
-              <Winner winner={''} isNounders={true} isUNouncil={false} />
+              <Winner winner={''} isNounders={false} isUNouncil={true} />
             </div>
           </Col>
         </Row>
@@ -106,10 +106,9 @@ const NounderNounContent: React.FC<{
               </Link>
               .{' '}
               <Trans>
-                For this reason, we, the project's founders (‘UNounders’) have chosen to compensate
-                ourselves with UNouns. Every 10th UNoun for the first 5 years of the project will be
-                sent to our multisig (2/3), where it will be vested and distributed to individual
-                UNounders.
+                The UNouncil is allocated token ending in 5 (Alp IDs #2, #12, #22 and so on) until #222,
+                which will be 22 UNouns as total for UNouncil. It will be automatically sent to a multisig to onboard
+                NGOs/NPOs to UNouns DAO and other nounish DAOs such as Nouns DAO, Lil Nouns DAO, Gnars DAO, etc.
               </Trans>
             </li>
           </ul>
@@ -130,4 +129,4 @@ const NounderNounContent: React.FC<{
     </AuctionActivityWrapper>
   );
 };
-export default NounderNounContent;
+export default UNouncilUNounContent;
