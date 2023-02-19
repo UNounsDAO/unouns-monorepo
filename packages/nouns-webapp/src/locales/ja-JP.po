@@ -703,7 +703,7 @@ msgid "UNounders receive rewards in the form of UNouns (10% of supply for first 
 msgstr "UNounderには、UNounsという形で報酬が与えられます (最初の5年間は供給量の10％)。"
 
 #: src/components/Documentation/index.tsx
-#~ msgid "UNounders will proveably revoke this veto right when they deem it safe to do so. This decision will be based on a healthy Noun distribution and a community that is engaged in the governance process."
+#~ msgid "UNounders will proveably revoke this veto right when they deem it safe to do so. This decision will be based on a healthy UNoun distribution and a community that is engaged in the governance process."
 #~ msgstr "Nounderは、安全であると判断した場合、この拒否権を無効にすることが出来ます。この決定は、健全なNounの分布と、ガバナンスプロセスに関与しているコミュニティに基づいて行われます。"
 
 #: src/pages/UNounders/index.tsx
@@ -733,23 +733,23 @@ msgid "UNouns DAO uses a fork of {compoundGovLink}."
 msgstr "UNouns DAOは {compoundGovLink} のフォークを使用しています。"
 
 #: src/components/Documentation/index.tsx
-msgid "UNouns DAO utilizes a fork of {compoundGovLink} and is the main governing body of the UNouns ecosystem. The UNouns DAO treasury receives 100% of ETH proceeds from daily Noun auctions. Each Noun is an irrevocable member of UNouns DAO and entitled to one vote in all governance matters. Noun votes are non-transferable (if you sell your Noun the vote goes with it) but delegatable, which means you can assign your vote to someone else as long as you own your Noun."
-msgstr "UNouns DAOは {compoundGovLink} のフォークを利用しており、UNounsエコシステムの主要な統治機関です。毎日起こるNounオークションから得られるETHの収益の100％はUNouns DAO トレジャリーにて受け取られています。各NounはNouns DAOの変更不可能なメンバーであり、すべてのガバナンスの問題で1票の投票権を有します。Nounの票は譲渡できませんが (Nounの売却にはそれに応じて票も移ります)、委任することができます。"
+msgid "UNouns DAO utilizes a fork of {compoundGovLink} and is the main governing body of the UNouns ecosystem. The UNouns DAO treasury receives 100% of ETH proceeds from daily UNoun auctions. Each UNoun is an irrevocable member of UNouns DAO and entitled to one vote in all governance matters. UNoun votes are non-transferable (if you sell your UNoun the vote goes with it) but delegatable, which means you can assign your vote to someone else as long as you own your UNoun."
+msgstr "UNouns DAOは {compoundGovLink} のフォークを利用しており、UNounsエコシステムの主要な統治機関です。毎日起こるUNounオークションから得られるETHの収益の100％はUNouns DAO トレジャリーにて受け取られています。各UNounはUNouns DAOの取り消し不可能なメンバーであり、すべてのガバナンスの問題で1票の投票権を有します。UNounの票は譲渡できませんが (UNounの売却にはそれに応じて票も移ります)、委任することができます。"
 
 #: src/pages/Playground/index.tsx
 msgid "UNouns Protocol"
 msgstr "UNounsプロトコル"
 
 #: src/components/Documentation/index.tsx
-msgid "UNouns DAO is an expansion DAO based on {NounsLink}, UNouns = Nouns doing United Nations. UNouns attempts to create community and governance that will access global issues and SDGs and create better world by utilizing a treasury, that can be used by the community. By expanding the ecosystem, UNouns DAO aims to create better world with DAO and create hornorable presence for Nouns."
+msgid "UNouns DAO is an expansion DAO based on {NounsLink}, UNouns = Nouns doing United Nations. UNouns attempts to create community and governance that will access global issues and SDGs and create better world by utilizing a treasury, that can be used by the community. By expanding the ecosystem, UNouns DAO aims to create better world with DAO and hornorable presence for Nouns."
 msgstr "UNouns は{NounsLink}をベースとした拡張したDAOです。UNounsはNounsの国連versionです。UNounsはコミュニティーのtreasury(共同の財布)を用いてグローバルな問題/課題やSDGsにDAOとして取り組み、世界を良くしようと試みます。"
 
 #: src/components/Documentation/index.tsx
-msgid "UNouns are generated randomly based Ethereum block hashes. There are no 'if' statements or other rules governing Noun trait scarcity, which makes all UNouns equally rare. As of this writing, UNouns are made up of:"
+msgid "UNouns are generated randomly based Ethereum block hashes. There are no 'if' statements or other rules governing UNoun trait scarcity, which makes all UNouns equally rare. As of this writing, UNouns are made up of:"
 msgstr "Nounsは、イーサリアムのブロックハッシュに基づいてランダムに生成されます。Nounの特徴の希少性を管理する「if」ステートメントやその他のルールは存在しないため、すべてのNounが等しく希少となります。現時点では、Nounsは以下のもので構成されています："
 
 #: src/components/Documentation/index.tsx
-msgid "UNouns are stored directly on Ethereum and do not utilize pointers to other networks such as IPFS. This is possible because Noun parts are compressed and stored on-chain using a custom run-length encoding (RLE), which is a form of lossless compression."
+msgid "UNouns are stored directly on Ethereum and do not utilize pointers to other networks such as IPFS. This is possible because UNoun parts are compressed and stored on-chain using a custom run-length encoding (RLE), which is a form of lossless compression."
 msgstr "NounはEthereum上に直接保存されるため、IPFSのような他のネットワークへのポインタを利用することはありません。これは、Nounのパーツが可逆圧縮の一種であるカスタムのランレングス圧縮 (RLE) を使用してオンチェーンで圧縮・保存されていることから実現したものです。"
 
 #: src/components/Documentation/index.tsx
@@ -766,7 +766,7 @@ msgstr "今持っています"
 
 #: src/components/Banner/index.tsx
 msgid "ONE UNOUN,"
-msgstr "1つのNOUNを"
+msgstr "1つのUNOUNを"
 
 #: src/components/Documentation/index.tsx
 msgid "On-Chain Artwork"
@@ -774,11 +774,11 @@ msgstr "オンチェーンアートワーク"
 
 #: src/components/Documentation/index.tsx
 msgid "One UNoun is equal to one vote."
-msgstr "1体のNounにつき、1票の投票件を得ることができます。"
+msgstr "1体のUNounにつき、1票の投票件を得ることができます。"
 
 #: src/components/Documentation/index.tsx
 msgid "One UNoun is trustlessly auctioned every 24 hours, forever."
-msgstr "Nounsは24時間ごとに1体ずつ、第三者の介入無しでオークションに出され続けます。"
+msgstr "UNounsは24時間ごとに1体ずつ、第三者の介入無しでオークションに出され続けます。"
 
 #: src/components/NounsIntroSection/index.tsx
 msgid "One UNoun, Every Day, Forever."
@@ -988,7 +988,7 @@ msgid "Switch"
 msgstr "切り替え"
 
 #: src/pages/Vote/index.tsx
-msgid "Switch to Noun view"
+msgid "Switch to UNoun view"
 msgstr "Nounビューに切り替えます"
 
 #: src/pages/Vote/index.tsx
@@ -1008,7 +1008,7 @@ msgid "Thank you for voting."
 msgstr "投票ありがとうございます。"
 
 #: src/components/Documentation/index.tsx
-msgid "The Noun Seeder contract is used to determine Noun traits during the minting process. The seeder contract can be replaced to allow for future trait generation algorithm upgrades. Additionally, it can be locked by the UNouns DAO to prevent any future updates. Currently, Noun traits are determined using pseudo-random number generation:"
+msgid "The UNoun Seeder contract is used to determine UNoun traits during the minting process. The seeder contract can be replaced to allow for future trait generation algorithm upgrades. Additionally, it can be locked by the UNouns DAO to prevent any future updates. Currently, UNoun traits are determined using pseudo-random number generation:"
 msgstr "Nounシーダー契約は、ミントのプロセスでNounsの特徴を決定するために使用されます。シーダー契約は、今後の特徴生成アルゴリズムのアップグレードを可能にするために変更することができ、さらに、今後のアップデートを防ぐためにNouns DAOによってロックすることも可能です。現在、Nounsの特徴は擬似乱数生成を用い決められています。"
 
 #: src/pages/UNounders/index.tsx
@@ -1016,11 +1016,11 @@ msgid "The UNounders"
 msgstr "UNounders"
 
 #: src/pages/UNounders/index.tsx
-msgid "The UNounders reward is intended as compensation for our pre and post-launch contributions to the project, and to help us participate meaningfully in governance as the project matures. Since there are 10 UNounders, after 5 years each UNounder could receive up to 1% of the Noun supply."
+msgid "The UNounders reward is intended as compensation for our pre and post-launch contributions to the project, and to help us participate meaningfully in governance as the project matures. Since there are 10 UNounders, after 5 years each UNounder could receive up to 1% of the UNoun supply."
 msgstr "Noundersの報酬は、プロジェクト開始前と開始後の貢献に対する対価として提供されるほか、プロジェクトが成熟するにつれ、ガバナンスに有意義に参加できるよう支援することも目的としています。Noundersは10人なので、5年後には各ナウンダーは最大でNounの供給量の1%を受け取ることができます。"
 
 #: src/components/Documentation/index.tsx
-msgid "The UNouns Auction Contract will act as a self-sufficient Noun generation and distribution mechanism, auctioning one Noun every 24 hours, forever. 100% of auction proceeds (ETH) are automatically deposited in the UNouns DAO treasury, where they are governed by Noun owners."
+msgid "The UNouns Auction Contract will act as a self-sufficient UNoun generation and distribution mechanism, auctioning one UNoun every 24 hours, forever. 100% of auction proceeds (ETH) are automatically deposited in the UNouns DAO treasury, where they are governed by UNoun owners."
 msgstr "Nounsオークション契約は、Noun生成・分配の自律的なメカニズムとして機能するため、24時間ごとに1体のNounを永遠にオークションにかけ続けます。オークションの収益 (ETH) は100%自動的にNounの所有者によって管理されている、Nouns DAO のトレジャリーに預けられます。"
 
 #: src/components/Documentation/index.tsx
@@ -1056,8 +1056,8 @@ msgid "The compressed parts are efficiently converted into a single base64 encod
 msgstr "圧縮されたパーツは、オンチェインで効率よく1つのbase64エンコードされたSVG画像に変換されます。そのために、各パーツは中間フォーマットにデコードされた後、オンチェーンでの文字列連結により一連のSVG rectsに変換されます。SVG全体が生成されると、それはbase64でエンコードされます。"
 
 #: src/pages/Playground/index.tsx
-msgid "The playground was built using the {nounsProtocolLink}. Noun's traits are determined by the Noun Seed. The seed was generated using {nounsAssetsLink} and rendered using the {nounsSDKLink}."
-msgstr "遊び場は{nounsProtocolLink} を使用して作られており、Nounの特徴は、Nounシードによって決まります。{nounsAssetsLink} でシードを生成し、{nounsSDKLink} でレンダリングされています。"
+msgid "The playground was built using the {nounsProtocolLink}. UNoun's traits are determined by the UNoun Seed. The seed was generated using unouns-assets and rendered using the {nounsSDKLink}."
+msgstr "遊び場は{nounsProtocolLink} を使用して作られており、Nounの特徴は、Nounシードによって決まります。{nounsAssetsLink} でシードを生成し、unouns-assets でレンダリングされています。"
 
 #: src/components/Documentation/index.tsx
 msgid "The proposal veto right was initially envisioned as a temporary solution to the problem of ‘51% attacks’ on the UNouns DAO treasury. While UNounders initially believed that a healthy distribution of UNouns would be sufficient protection for the DAO, a more complete understanding of the incentives and risks has led to general consensus within the UNounders, the UNouns Foundation, and the wider community that a more robust game-theoretic solution should be implemented before the right is removed."
@@ -1076,7 +1076,7 @@ msgid "There was an error voting for your account."
 msgstr "アカウントの投票中にエラーが発生しました。"
 
 #: src/components/ProfileActivityFeed/index.tsx
-msgid "This Noun has no activity, since it was just created. Check back soon!"
+msgid "This UNoun has no activity, since it was just created. Check back soon!"
 msgstr "このNounは作成されたばかりで、動きがありません。また後ほどご確認ください！"
 
 #: src/components/ProposalContent/index.tsx
@@ -1109,7 +1109,7 @@ msgstr ""
 #~ msgstr "コツ："
 
 #: src/components/Documentation/index.tsx
-msgid "Trait generation is not truly random. Traits can be predicted when minting a Noun on the pending block."
+msgid "Trait generation is not truly random. Traits can be predicted when minting a UNoun on the pending block."
 msgstr "特徴生成は完全にランダムというわけではなく、形質は、保留中のブロックにNounをミントする際に予想することができます。"
 
 #: src/components/Bid/index.tsx
@@ -1201,7 +1201,7 @@ msgid "View on Etherscan"
 msgstr "イーサスキャンで見る"
 
 #: src/components/Bid/index.tsx
-msgid "Vote for the next Noun"
+msgid "Vote for the next UNoun"
 msgstr "次のNounに投票する"
 
 #: src/components/ExploreGrid/ExploreNounDetail/index.tsx
@@ -1221,7 +1221,7 @@ msgid "Voted for"
 msgstr "賛成に投票"
 
 #: src/components/DelegateHoverCard/index.tsx
-msgid "Voted with<0>{numVotesForProp}</0>Noun"
+msgid "Voted with<0>{numVotesForProp}</0>UNoun"
 msgstr "<0>{numVotesForProp}</0>のNounで投票"
 
 #: src/components/DelegateHoverCard/index.tsx
@@ -1279,7 +1279,7 @@ msgid "You already have an active or pending proposal"
 msgstr "すでに有効または保留中の提案があります"
 
 #: src/components/Documentation/index.tsx
-msgid "You can experiment with off-chain Noun generation at the {playgroundLink}."
+msgid "You can experiment with off-chain UNoun generation at the {playgroundLink}."
 msgstr "{playgroundLink} にてオフチェーンのNoun生成を試すことができます。"
 
 #: src/components/SettleManuallyBtn/index.tsx

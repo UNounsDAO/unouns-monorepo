@@ -46,7 +46,7 @@ const Documentation = (props: DocumentationProps = { backgroundColor: '#FFF' }) 
               UNouns DAO is an expansion DAO based on {NounsLink}, UNouns = Nouns doing United Nations.
               UNouns attempts to create community and governance that will access global issues and SDGs
               and create better world by utilizing a treasury, that can be used by the community.
-              By expanding the ecosystem, UNouns DAO aims to create better world with DAO and create hornorable presence for Nouns.
+              By expanding the ecosystem, UNouns DAO aims to create better world with DAO and hornorable presence for Nouns.
             </Trans>
           </p>
           <p className={classes.aboutText} style={{ paddingBottom: '4rem' }}>

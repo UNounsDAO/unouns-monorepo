@@ -262,7 +262,7 @@ const Playground: React.FC = () => {
             </h1>
             <p>
               <Trans>
-                The playground was built using the {nounsProtocolLink}. Noun's traits are determined
+                The playground was built using the {nounsProtocolLink}. UNoun's traits are determined
                 by the UNoun Seed. The seed was generated using unouns-assets and rendered using
                 the {nounsSDKLink}.
               </Trans>
