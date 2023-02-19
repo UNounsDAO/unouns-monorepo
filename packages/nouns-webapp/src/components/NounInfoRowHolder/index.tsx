@@ -25,11 +25,19 @@ const NounInfoRowHolder: React.FC<NounInfoRowHolderProps> = props => {
 
   const winner = data && data.auction.bidder?.id;
 
-  if (loading || !winner) {
+  if (loading) {
     return (
       <div className={classes.nounHolderInfoContainer}>
         <span className={classes.nounHolderLoading}>
           <Trans>Loading...</Trans>
+        </span>
+      </div>
+    );
+  } else if (!winner) {
+    return (
+      <div className={classes.nounHolderInfoContainer}>
+        <span className={classes.nounHolderLoading}>
+          <Trans>Saved from Loss</Trans>
         </span>
       </div>
     );
@@ -69,7 +77,7 @@ const NounInfoRowHolder: React.FC<NounInfoRowHolderProps> = props => {
             rel="noreferrer"
           >
             {winner.toLowerCase() === config.addresses.nounsAuctionHouseProxy.toLowerCase() ? (
-              <Trans>Nouns Auction House</Trans>
+              <Trans>UNouns Auction House</Trans>
             ) : (
               shortAddressComponent
             )}
