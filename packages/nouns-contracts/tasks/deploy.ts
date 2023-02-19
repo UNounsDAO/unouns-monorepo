@@ -28,7 +28,7 @@ const nounsDAOTeasuries: Record<number, string> = {
 };
 
 const unoundersDAOAddresses: Record<number, string> = {
-  [ChainId.Mainnet]: '', // note: gotta set
+  [ChainId.Mainnet]: '0x4fF1B94b57E32B30b23e49c8aC087389b910646E',
   [ChainId.Goerli]: '0xDEF60ef4d2a6fDE245dA5C7FB957b2CbF53F6962',
 };
 
