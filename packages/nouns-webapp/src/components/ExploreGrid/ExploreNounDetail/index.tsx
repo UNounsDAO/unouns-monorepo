@@ -165,7 +165,6 @@ const ExploreNounDetail: React.FC<ExploreNounDetailProps> = props => {
     if (nounTraitsOrdered) {
       return nounTraitsOrdered;
     } else {
-      console.log(`loading noun traits. nounTraitsOrdered:${nounTraitsOrdered}`)
       return loadingNounTraits;
     }
   };

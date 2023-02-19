@@ -223,19 +223,22 @@ const Documentation = (props: DocumentationProps = { backgroundColor: '#FFF' }) 
                   <Trans>backgrounds (2) </Trans>
                 </li>
                 <li>
-                  <Trans>bodies (60)</Trans>
+                  <Trans>bodies (60): (51 countries + 3 UN iconic nouns * 3 colors)</Trans>
                 </li>
                 <li>
                   <Trans>accessories (3) </Trans>
                 </li>
                 <li>
-                  <Trans>heads (59) </Trans>
+                  <Trans>heads (59): (51 countries) </Trans>
                 </li>
                 <li>
                   <Trans>glasses (31)</Trans>
                 </li>
               </ul>
               <Trans>
+                More traits arts are coming soon. We're planning second, third,
+                fourth update for trait arts to add all 193 countries, that join United Nations,
+                to UNouns trait art. We'll add 142 countries traits arts within a year.
                 You can experiment with off-chain UNoun generation at the {playgroundLink}.
               </Trans>
             </Accordion.Body>

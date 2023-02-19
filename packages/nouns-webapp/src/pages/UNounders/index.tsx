@@ -99,7 +99,6 @@ const UNoundersPage = () => {
             We, the project's founders (‘UNounders’) have chosen to compensate ourselves with Nouns. Every 10th unoun
             for the first 5 years of the project will be sent to our multisig (2/3), where it will
             be vested and distributed to individual UNounders.
-            4 % of UNouns auction proceeds are sent to the UNounders for server, marketing, development fees, etc.
           </Trans>
         </p>
         <p style={{ textAlign: 'justify' }}>

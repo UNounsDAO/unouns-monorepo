@@ -188,9 +188,7 @@ const ChainSubscriber: React.FC = () => {
 
 const PastAuctions: React.FC = () => {
   const latestAuctionId = useAppSelector(state => state.onDisplayAuction.lastAuctionUNounId);
-  console.log(`<PastAuctions> latestAuctionId:${latestAuctionId}`)
   const { data } = useQuery(latestAuctionsQuery());
-  console.log(`<PastAuctions> data: ${data}`)
   const dispatch = useAppDispatch();
 
   useEffect(() => {
