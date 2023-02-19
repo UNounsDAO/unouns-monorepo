@@ -680,7 +680,7 @@ msgstr "Nounシーダーコントラクト"
 
 #: src/components/Documentation/index.tsx
 msgid "UNoun Traits"
-msgstr "Nounsの特徴"
+msgstr "UNounsの特徴"
 
 #: src/components/CurrentDelegatePannel/index.tsx
 msgid "UNoun votes are not transferable, but are <0>delegatable</0>, which means you can assign your vote to someone else as long as you own your UNoun."
@@ -741,8 +741,8 @@ msgid "UNouns Protocol"
 msgstr "UNounsプロトコル"
 
 #: src/components/Documentation/index.tsx
-msgid "UNouns are an experimental attempt to improve the formation of on-chain avatar communities. While projects such as {cryptopunksLink} have attempted to bootstrap digital community and identity, UNouns attempt to bootstrap identity, community, governance, and a treasury that can be used by the community."
-msgstr "UNouns は、オンチェーン・アバターコミュニティの形成を改善するための実験的な試みです。{cryptopunksLink} などのプロジェクトがデジタルコミュニティとアイデンティティの構築を試みているのに対し、Nounsはアイデンティティ、コミュニティ、ガバナンス、そしてコミュニティが使用できるトレジャリーを構築することを試みています。"
+msgid "UNouns DAO is an expansion DAO based on {NounsLink}, UNouns = Nouns doing United Nations. UNouns attempts to create community and governance that will access global issues and SDGs and create better world by utilizing a treasury, that can be used by the community. By expanding the ecosystem, UNouns DAO aims to create better world with DAO and create hornorable presence for Nouns."
+msgstr "UNouns は{NounsLink}をベースとした拡張したDAOです。UNounsはNounsの国連versionです。UNounsはコミュニティーのtreasury(共同の財布)を用いてグローバルな問題/課題やSDGsにDAOとして取り組み、世界を良くしようと試みます。"
 
 #: src/components/Documentation/index.tsx
 msgid "UNouns are generated randomly based Ethereum block hashes. There are no 'if' statements or other rules governing Noun trait scarcity, which makes all UNouns equally rare. As of this writing, UNouns are made up of:"
