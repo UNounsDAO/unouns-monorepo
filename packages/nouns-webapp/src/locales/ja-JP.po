@@ -626,7 +626,7 @@ msgstr "詳細はこちら"
 
 #: src/components/Documentation/index.tsx
 msgid "Learn more below, or start creating UNouns off-chain using the {playgroundLink}."
-msgstr "詳しくは以下をご覧ください。また、{playgroundLink} を使いNounsのオフチェーンの作成をすることもできます。"
+msgstr "詳しくは以下をご覧ください。また、{playgroundLink} を使いUNounsのオフチェーンの作成をすることもできます。"
 
 #: src/components/NounInfoRowHolder/index.tsx
 msgid "Loading..."
@@ -1065,7 +1065,7 @@ msgstr ""
 
 #: src/components/Documentation/index.tsx
 msgid "The treasury is controlled exclusively by UNouns via governance."
-msgstr "トレジャリーは、ガバナンスを通じてNounsが独占的に管理しています。"
+msgstr "トレジャリーは、ガバナンスを通じてUNounsが独占的に管理しています。"
 
 #: src/components/Documentation/index.tsx
 msgid "There are unfortunately no algorithmic solutions for making these determinations in advance (if there were, the veto would not be required), and proposals must be considered on a case by case basis."
@@ -1229,7 +1229,7 @@ msgid "Voted with<0>{numVotesForProp}</0>UNouns"
 msgstr "<0>{numVotesForProp}</0>のNounで投票"
 
 #: src/components/VoteModal/index.tsx
-msgid "Voting with <0>{0}</0> Noun"
+msgid "Voting with <0>{0}</0> UNoun"
 msgstr ""
 
 #: src/components/VoteModal/index.tsx
@@ -1247,7 +1247,7 @@ msgstr "待機"
 
 #: src/components/Documentation/index.tsx
 msgid "While settlement is most heavily incentivized for the winning bidder, it can be triggered by anyone, allowing the system to trustlessly auction UNouns as long as Ethereum is operational and there are interested bidders."
-msgstr "決済は落札者に最も大きなインセンティブが与えられるが、誰でも起動できるため、Ethereumが稼働し、関心のある入札者がいる限り、システムは第三者の介入無しでNounsをオークションにかけることができます。"
+msgstr "決済は落札者に最も大きなインセンティブが与えられるが、誰でも起動できるため、Ethereumが稼働し、関心のある入札者がいる限り、システムは第三者の介入無しでUNounsをオークションにかけることができます。"
 
 #: src/components/DelegationCandidateInfo/index.tsx
 msgid "Will have"

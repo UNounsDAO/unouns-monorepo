@@ -1,7 +1,9 @@
 import classes from './NounsIntroSection.module.css';
 import Section from '../../layout/Section';
+import eyeCatch from '../../assets/eye-catch.png';
 import { Col } from 'react-bootstrap';
 import { Trans } from '@lingui/macro';
+import Image from 'react-bootstrap/Image';
 
 const NounsIntroSection = () => {
   return (
@@ -22,12 +24,10 @@ const NounsIntroSection = () => {
           </div>
         </Col>
         <Col lg={6} className={classes.embedContainer}>
-          <iframe
-            title="This is UNouns"
-            src="https://player.vimeo.com/video/781320182?h=db24612c0a&color=eaeae5&title=0&byline=0&portrait=0"
-            frameBorder="0"
-            allowFullScreen
-          ></iframe>
+          <Image
+            src={eyeCatch}
+            alt={`UNoun eye catch`}
+          />
         </Col>
       </Section>
     </>

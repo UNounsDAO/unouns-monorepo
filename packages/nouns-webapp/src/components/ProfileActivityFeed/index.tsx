@@ -37,9 +37,11 @@ const ProfileActivityFeed: React.FC<ProfileActivityFeedProps> = props => {
   const { loading, error, data } = useNounActivity(unounId);
   console.log(`loading:${loading}. data:${data}`)
   if (loading || !data || data === undefined) {
-    return  <div className={classes.nullStateCopy}>
-              <Trans>This Noun has no activity, since it was just created. Check back soon!</Trans>
+    return <Col lg={{ span: 10, offset: 3 }}>
+            <div className={classes.nullStateCopy}>
+                <Trans>No proposal yet</Trans>
             </div>
+          </Col>
   }
 
   if (error) {
