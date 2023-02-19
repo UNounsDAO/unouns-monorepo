@@ -31,7 +31,7 @@ msgid "... and {0} more"
 msgstr "...そしてさらに3つ"
 
 #: src/components/Documentation/index.tsx
-msgid "100% of Noun auction proceeds are trustlessly sent to the treasury."
+msgid "100% of UNoun auction proceeds are trustlessly sent to the treasury."
 msgstr "Nounオークションの売上は、第三者の介入無しで 100％トレジャリーに送られる仕組みになっています。"
 
 #: src/pages/UNounders/index.tsx
@@ -47,21 +47,21 @@ msgstr "404: お探しの人、場所、物は見つかりませんでした。"
 #~ msgstr ""
 
 #: src/components/profileEvent/event/DesktopNounWinEvent/index.tsx
-#~ msgid "<0> Noun {0} </0>  won by <1><2/></1>"
+#~ msgid "<0> UNoun {0} </0>  won by <1><2/></1>"
 #~ msgstr ""
 
 #: src/components/profileEvent/event/DesktopNounWinEvent/index.tsx
 #: src/components/profileEvent/event/MobileNounWinEvent/index.tsx
-msgid "<0> Noun {0} </0> sent to <1><2/></1>"
+msgid "<0> UNoun {0} </0> sent to <1><2/></1>"
 msgstr ""
 
 #: src/components/profileEvent/event/DesktopNounWinEvent/index.tsx
 #: src/components/profileEvent/event/MobileNounWinEvent/index.tsx
-msgid "<0> Noun {0} </0> won by <1><2/></1>"
+msgid "<0> UNoun {0} </0> won by <1><2/></1>"
 msgstr ""
 
 #: src/components/ByLineHoverCard/index.tsx
-msgid "<0>Delegated Noun: </0>"
+msgid "<0>Delegated UNoun: </0>"
 msgstr "委任Noun: "
 
 #: src/components/ByLineHoverCard/index.tsx
@@ -171,11 +171,11 @@ msgid "Against"
 msgstr "反対"
 
 #: src/components/NounderNounContent/index.tsx
-msgid "All Noun auction proceeds are sent to the"
-msgstr "すべてのNounオークションの収益は、"
+msgid "All UNoun auction proceeds are sent to the"
+msgstr "すべてのUNounオークションの収益は、"
 
 #: src/pages/UNounders/index.tsx
-msgid "All Noun auction proceeds are sent to the UNouns DAO. For this reason, we, the project's founders (‘UNounders’) have chosen to compensate ourselves with UNouns. Every 10th noun for the first 5 years of the project will be sent to our multisig (5/10), where it will be vested and distributed to individual UNounders."
+msgid "All UNoun auction proceeds are sent to the UNouns DAO. For this reason, we, the project's founders (‘UNounders’) have chosen to compensate ourselves with UNouns. Every 10th noun for the first 5 years of the project will be sent to our multisig (5/10), where it will be vested and distributed to individual UNounders."
 msgstr "UNounオークションの収益は95% UNouns DAOに送られます。我々、プロジェクトの創設者 (UNounders) はUNounsで自らを補償することに決めました。 プロジェクトの最初の5年間の間は、毎回10体目のUNounがマルチシグ(2/3) に送られた後、個々のUNoundersに与えられ、配布されます。"
 
 #: src/components/Documentation/index.tsx
@@ -221,7 +221,7 @@ msgid "Background"
 msgstr "背景"
 
 #: src/components/Documentation/index.tsx
-msgid "Because 100% of Noun auction proceeds are sent to UNouns DAO, UNounders have chosen to compensate themselves with UNouns. Every 10th Noun for the first 5 years of the project (Noun ids #0, #10, #20, #30 and so on) will be automatically sent to the UNounder's multisig to be vested and shared among the founding members of the project."
+msgid "Because 100% of UNoun auction proceeds are sent to UNouns DAO, UNounders have chosen to compensate themselves with UNouns. Every 10th UNoun for the first 5 years of the project (UNoun ids #0, #10, #20, #30 and so on) will be automatically sent to the UNounder's multisig to be vested and shared among the founding members of the project."
 msgstr "Nounオークションの収益の100%がNouns DAOに送られるため、Nounderは自分達をNounsで補償することに決めました。プロジェクトの最初の5年間の間、毎回10番目のNoun (UNoun ID #0, #10, #20, #30 など) が自動的にNoundersのマルチシグに送られ、プロジェクトの創設メンバー達に与えられて、共有されます。"
 
 #: src/pages/CreateProposal/index.tsx
@@ -444,7 +444,7 @@ msgid "EVERY DAY,"
 msgstr "毎日"
 
 #: src/components/Documentation/index.tsx
-msgid "Each time an auction is settled, the settlement transaction will also cause a new Noun to be minted and a new 24 hour auction to begin."
+msgid "Each time an auction is settled, the settlement transaction will also cause a new UNoun to be minted and a new 24 hour auction to begin."
 msgstr "オークションが決済される度に、決済取引によって新しいNounがミントされ、また新たに24時間のオークションが開催されます。"
 
 #: src/pages/Vote/index.tsx
@@ -476,7 +476,7 @@ msgid "Error"
 msgstr "エラー"
 
 #: src/components/NounInfoRowBirthday/index.tsx
-msgid "Error fetching Noun birthday"
+msgid "Error fetching UNoun birthday"
 msgstr "Nounの誕生日を取得できませんでした"
 
 #: src/components/Footer/index.tsx
@@ -485,7 +485,7 @@ msgid "Etherscan"
 msgstr "Etherscan"
 
 #: src/components/NounsIntroSection/index.tsx
-msgid "Every new Noun pushed right to your pocket! View the current auction, remix your own Noun, and explore the entire history directly from the app."
+msgid "Every new UNoun pushed right to your pocket! View the current auction, remix your own UNoun, and explore the entire history directly from the app."
 msgstr ""
 
 #: src/pages/Vote/index.tsx
@@ -523,12 +523,12 @@ msgid "Failed to fetch"
 msgstr "取得できませんでした"
 
 #: src/components/ProfileActivityFeed/index.tsx
-msgid "Failed to fetch Noun activity history"
-msgstr "Noun の活動履歴の取得に失敗しました。"
+msgid "Failed to fetch UNoun activity history"
+msgstr "UNoun の活動履歴の取得に失敗しました。"
 
 #: src/components/Holder/index.tsx
 #: src/components/NounInfoRowHolder/index.tsx
-msgid "Failed to fetch Noun info"
+msgid "Failed to fetch UNoun info"
 msgstr "Nounに関する情報の取得に失敗しました"
 
 #: src/components/VoteCard/index.tsx
@@ -537,7 +537,7 @@ msgid "For"
 msgstr "賛成"
 
 #: src/components/NounderNounContent/index.tsx
-msgid "For this reason, we, the project's founders (‘UNounders’) have chosen to compensate ourselves with UNouns. Every 10th Noun for the first 5 years of the project will be sent to our multisig (5/10), where it will be vested and distributed to individual UNounders."
+msgid "For this reason, we, the project's founders (‘UNounders’) have chosen to compensate ourselves with UNouns. Every 10th UNoun for the first 5 years of the project will be sent to our multisig (5/10), where it will be vested and distributed to individual UNounders."
 msgstr "その為、我々、プロジェクトの創設者 (UNounders) はNounsで自らを補償することに決めました。 プロジェクトの最初の5年間の間は、毎回10体目のNounがマルチシグ(5/10) に送られた後、個々のナウンダーズに与えられ、配布されます。"
 
 #: src/components/Footer/index.tsx
@@ -593,7 +593,7 @@ msgid "Held by"
 msgstr "保有者"
 
 #: src/components/AuctionActivity/index.tsx
-msgid "Help mint the next Noun"
+msgid "Help mint the next UNoun"
 msgstr "次にミントされるNounの投票をしてください"
 
 #: src/components/profileEvent/event/DesktopTransferEvent/index.tsx
@@ -605,7 +605,7 @@ msgid "Holder changed from<0><1/></0> to <2><3/></2>"
 msgstr ""
 
 #: src/components/Documentation/index.tsx
-#~ msgid "In addition to the precautions taken by Compound Governance, UNounders have given themselves a special veto right to ensure that no malicious proposals can be passed while the Noun supply is low. This veto right will only be used if an obviously harmful governance proposal has been passed, and is intended as a last resort."
+#~ msgid "In addition to the precautions taken by Compound Governance, UNounders have given themselves a special veto right to ensure that no malicious proposals can be passed while the UNoun supply is low. This veto right will only be used if an obviously harmful governance proposal has been passed, and is intended as a last resort."
 #~ msgstr "コンパウンドガバナンスによる予防措置に加えて、Nounの供給量が少ない間に悪意のある議案が通らないように、Noundersは特別な拒否権を保有しています。この拒否権は、明らかに有害なガバナンスの提案が可決された場合にのみ行使され、最後の手段として使用されます。"
 
 #: src/components/Bid/index.tsx
@@ -671,24 +671,24 @@ msgid "Note"
 msgstr ""
 
 #: src/pages/Governance/index.tsx
-msgid "Noun"
-msgstr "Noun"
+msgid "UNoun"
+msgstr "UNoun"
 
 #: src/components/Documentation/index.tsx
-msgid "Noun Seeder Contract"
+msgid "UNoun Seeder Contract"
 msgstr "Nounシーダーコントラクト"
 
 #: src/components/Documentation/index.tsx
-msgid "Noun Traits"
+msgid "UNoun Traits"
 msgstr "Nounsの特徴"
 
 #: src/components/CurrentDelegatePannel/index.tsx
-msgid "Noun votes are not transferable, but are <0>delegatable</0>, which means you can assign your vote to someone else as long as you own your Noun."
+msgid "UNoun votes are not transferable, but are <0>delegatable</0>, which means you can assign your vote to someone else as long as you own your UNoun."
 msgstr "Nounの票は譲渡できませんが (Nounの売却にはそれに応じて票も移ります)、委任することができます。"
 
 #: src/components/AuctionActivityNounTitle/index.tsx
-msgid "Noun {0}"
-msgstr "Noun {0}"
+msgid "UNoun {0}"
+msgstr "UNoun {0}"
 
 #: src/components/Documentation/index.tsx
 msgid "UNounder distributions don't interfere with the cadence of 24 hour auctions. UNouns are sent directly to the UNounder's Multisig, and auctions continue on schedule with the next available UNoun ID."
