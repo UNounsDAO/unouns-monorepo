@@ -69,6 +69,7 @@ const Auction: React.FC<AuctionProps> = props => {
       displayGraphDepComps={true}
     />
   );
+
   const nounderNounContent = currentAuction && lastUNounId && (
     <NounderNounContent
       mintTimestamp={currentAuction.startTime}
