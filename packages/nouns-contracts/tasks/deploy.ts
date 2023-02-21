@@ -78,7 +78,7 @@ task('deploy', 'Deploys NFTDescriptor, NounsDescriptor, NounsSeeder, and NounsTo
   .addOptionalParam(
     'auctionMinIncrementBidPercentage',
     'The auction min increment bid percentage (out of 100)',
-    10 /* 10% */,
+    5 /* 5% */,
     types.int,
   )
   .addOptionalParam(
