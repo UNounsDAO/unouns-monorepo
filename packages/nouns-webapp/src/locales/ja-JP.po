@@ -1320,7 +1320,7 @@ msgstr "あなたはすでにこのアドレスに委任しています"
 
 #: src/pages/Playground/index.tsx
 msgid "You've generated {0} years worth of UNouns"
-msgstr "{0} 年分のナウンを生成しました"
+msgstr "{0} 年分のUNounsを生成しました"
 
 #: src/components/VoteModal/index.tsx
 msgid "You've successfully voted on on prop {0}"
