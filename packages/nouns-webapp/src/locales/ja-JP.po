@@ -1057,7 +1057,7 @@ msgstr "圧縮されたパーツは、オンチェインで効率よく1つのba
 
 #: src/pages/Playground/index.tsx
 msgid "The playground was built using the {nounsProtocolLink}. UNoun's traits are determined by the UNoun Seed. The seed was generated using unouns-assets and rendered using the {nounsSDKLink}."
-msgstr "遊び場は{nounsProtocolLink} を使用して作られており、Nounの特徴は、Nounシードによって決まります。{nounsAssetsLink} でシードを生成し、unouns-assets でレンダリングされています。"
+msgstr "遊び場は{nounsProtocolLink} を使用して作られており、UNounの特徴は、Nounシードによって決まります。{nounsAssetsLink} でシードを生成し、unouns-assets でレンダリングされています。"
 
 #: src/components/Documentation/index.tsx
 msgid "The proposal veto right was initially envisioned as a temporary solution to the problem of ‘51% attacks’ on the UNouns DAO treasury. While UNounders initially believed that a healthy distribution of UNouns would be sufficient protection for the DAO, a more complete understanding of the incentives and risks has led to general consensus within the UNounders, the UNouns Foundation, and the wider community that a more robust game-theoretic solution should be implemented before the right is removed."
