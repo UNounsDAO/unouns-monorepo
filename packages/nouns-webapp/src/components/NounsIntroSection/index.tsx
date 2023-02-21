@@ -17,8 +17,8 @@ const NounsIntroSection = () => {
             <p>
               <Trans>
                 Behold, an infinite work of art! UNouns is a community-owned brand that makes a
-                positive impact by funding ideas and fostering collaboration. From collectors
-                and technologists, to non-profits and brands, UNouns is for everyone.
+                positive impact by funding ideas, fostering collaboration and solving global issues in nounish ways.
+                From artists, collectors and technologists, to non-profits and brands, UNouns is for everyone.
               </Trans>
             </p>
           </div>
