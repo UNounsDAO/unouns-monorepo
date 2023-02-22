@@ -33,12 +33,12 @@ const unoundersDAOAddresses: Record<number, string> = {
 };
 
 const unouncilDAOAddresses: Record<number, string> = {
-  [ChainId.Mainnet]: '', // note: gotta set
+  [ChainId.Mainnet]: '0x8653E82f262FCeAF4a479B5501310DD4CfB69e17',
   [ChainId.Goerli]: '0xb9E9061e342257074214e73a26c83746ff6c52DB',
 };
 
 const halloffameAddresses: Record<number, string> = {
-  [ChainId.Mainnet]: '', // note: gotta set
+  [ChainId.Mainnet]: '0x93D788F6EE2D47C82BC075EA314D941d836093B6',
   [ChainId.Goerli]: '0x2672F15DD5129099cF5C4f66b3e82E7f5589f0c3',
 };
 
