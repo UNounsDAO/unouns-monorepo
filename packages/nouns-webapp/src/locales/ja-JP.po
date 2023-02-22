@@ -260,7 +260,7 @@ msgstr "入札はここに表示されます"
 #: src/components/ExploreGrid/ExploreNounDetail/index.tsx
 #: src/pages/Playground/index.tsx
 msgid "Body"
-msgstr "体"
+msgstr "ボディー"
 
 #: src/components/NounHoverCard/index.tsx
 #: src/components/NounInfoRowBirthday/index.tsx
@@ -585,7 +585,7 @@ msgstr "票あり"
 #: src/components/ExploreGrid/ExploreNounDetail/index.tsx
 #: src/pages/Playground/index.tsx
 msgid "Head"
-msgstr "頭"
+msgstr "ヘッド"
 
 #: src/components/Holder/index.tsx
 #: src/components/NounHoverCard/index.tsx
@@ -676,7 +676,7 @@ msgstr "UNoun"
 
 #: src/components/Documentation/index.tsx
 msgid "UNoun Seeder Contract"
-msgstr "Nounシーダーコントラクト"
+msgstr "UNounシーダーコントラクト"
 
 #: src/components/Documentation/index.tsx
 msgid "UNoun Traits"
@@ -692,7 +692,7 @@ msgstr "UNoun {0}"
 
 #: src/components/Documentation/index.tsx
 msgid "UNounder distributions don't interfere with the cadence of 24 hour auctions. UNouns are sent directly to the UNounder's Multisig, and auctions continue on schedule with the next available UNoun ID."
-msgstr "Nounder配布により24時間オークションの頻度に影響が及ぶことはありません。 NounsはNounderのマルチシグに直接送られ、オークションは次の有効なNouns IDによって予定通り継続されます。"
+msgstr "UNounder配布により24時間オークションの頻度に影響が及ぶことはありません。 UNounsはUNoundersのマルチシグに直接送られ、オークションは次の有効なUNouns IDによって予定通り継続されます。"
 
 #: src/components/Documentation/index.tsx
 msgid "UNounder's Reward"
@@ -746,11 +746,11 @@ msgstr "UNouns は{NounsLink}をベースとした拡張したDAOです。UNouns
 
 #: src/components/Documentation/index.tsx
 msgid "UNouns are generated randomly based Ethereum block hashes. There are no 'if' statements or other rules governing UNoun trait scarcity, which makes all UNouns equally rare. As of this writing, UNouns are made up of:"
-msgstr "Nounsは、イーサリアムのブロックハッシュに基づいてランダムに生成されます。Nounの特徴の希少性を管理する「if」ステートメントやその他のルールは存在しないため、すべてのNounが等しく希少となります。現時点では、Nounsは以下のもので構成されています："
+msgstr "UNounsは、イーサリアムのブロックハッシュに基づいてランダムに生成されます。UNounの特徴の希少性を管理する「if」ステートメントやその他のルールは存在しないため、すべてのNounが等しく希少となります。現時点では、Nounsは以下のもので構成されています："
 
 #: src/components/Documentation/index.tsx
 msgid "UNouns are stored directly on Ethereum and do not utilize pointers to other networks such as IPFS. This is possible because UNoun parts are compressed and stored on-chain using a custom run-length encoding (RLE), which is a form of lossless compression."
-msgstr "NounはEthereum上に直接保存されるため、IPFSのような他のネットワークへのポインタを利用することはありません。これは、Nounのパーツが可逆圧縮の一種であるカスタムのランレングス圧縮 (RLE) を使用してオンチェーンで圧縮・保存されていることから実現したものです。"
+msgstr "UNounはEthereum上に直接保存されるため、IPFSのような他のネットワークへのポインタを利用することはありません。これは、UNounのパーツが可逆圧縮の一種であるカスタムのランレングス圧縮 (RLE) を使用してオンチェーンで圧縮・保存されていることから実現したものです。"
 
 #: src/components/Documentation/index.tsx
 msgid "UNouns artwork is in the {publicDomainLink}."
@@ -1057,7 +1057,7 @@ msgstr "圧縮されたパーツは、オンチェインで効率よく1つのba
 
 #: src/pages/Playground/index.tsx
 msgid "The playground was built using the {nounsProtocolLink}. UNoun's traits are determined by the UNoun Seed. The seed was generated using unouns-assets and rendered using the {nounsSDKLink}."
-msgstr "遊び場は{nounsProtocolLink} を使用して作られており、Nounの特徴は、Nounシードによって決まります。{nounsAssetsLink} でシードを生成し、unouns-assets でレンダリングされています。"
+msgstr "遊び場は{nounsProtocolLink} を使用して作られており、UNounの特徴は、Nounシードによって決まります。{nounsAssetsLink} でシードを生成し、unouns-assets でレンダリングされています。"
 
 #: src/components/Documentation/index.tsx
 msgid "The proposal veto right was initially envisioned as a temporary solution to the problem of ‘51% attacks’ on the UNouns DAO treasury. While UNounders initially believed that a healthy distribution of UNouns would be sufficient protection for the DAO, a more complete understanding of the incentives and risks has led to general consensus within the UNounders, the UNouns Foundation, and the wider community that a more robust game-theoretic solution should be implemented before the right is removed."
@@ -1320,7 +1320,7 @@ msgstr "あなたはすでにこのアドレスに委任しています"
 
 #: src/pages/Playground/index.tsx
 msgid "You've generated {0} years worth of UNouns"
-msgstr "{0} 年分のナウンを生成しました"
+msgstr "{0} 年分のUNounsを生成しました"
 
 #: src/components/VoteModal/index.tsx
 msgid "You've successfully voted on on prop {0}"
@@ -1336,7 +1336,7 @@ msgstr "あなたの<0>{availableVotes}</0>票が新しいアカウントに委�
 
 #: src/components/Documentation/index.tsx
 msgid "accessories (140)"
-msgstr "付属品(140)"
+msgstr "アクセサリー(140)"
 
 #: src/components/AuctionTimer/index.tsx
 msgid "at"
@@ -1352,7 +1352,7 @@ msgstr "背景 (2)"
 
 #: src/components/Documentation/index.tsx
 msgid "bodies (30)"
-msgstr "体 (30)"
+msgstr "ボディー (30)"
 
 #: src/components/Documentation/index.tsx
 msgid "glasses (23)"

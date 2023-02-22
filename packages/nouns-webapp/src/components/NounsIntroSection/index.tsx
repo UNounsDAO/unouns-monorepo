@@ -8,7 +8,7 @@ import Image from 'react-bootstrap/Image';
 const NounsIntroSection = () => {
   return (
     <>
-      <Section fullWidth={false} className={classes.videoSection}>
+      <Section fullWidth={false} className={classes.bannerSection}>
         <Col lg={6}>
           <div className={classes.textWrapper}>
             <h1>
@@ -17,13 +17,13 @@ const NounsIntroSection = () => {
             <p>
               <Trans>
                 Behold, an infinite work of art! UNouns is a community-owned brand that makes a
-                positive impact by funding ideas and fostering collaboration. From collectors
-                and technologists, to non-profits and brands, UNouns is for everyone.
+                positive impact by funding ideas, fostering collaboration and solving global issues in nounish ways.
+                From artists, collectors and technologists, to non-profits and brands, UNouns is for everyone.
               </Trans>
             </p>
           </div>
         </Col>
-        <Col lg={6} className={classes.embedContainer}>
+        <Col lg={6} className={classes.bannerSection}>
           <Image
             src={eyeCatch}
             alt={`UNoun eye catch`}

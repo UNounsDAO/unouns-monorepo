@@ -332,6 +332,20 @@ const Documentation = (props: DocumentationProps = { backgroundColor: '#FFF' }) 
               </p>
             </Accordion.Body>
           </Accordion.Item>
+          <Accordion.Item eventKey="7" className={classes.accordionItem}>
+            <Accordion.Header className={classes.accordionHeader}>
+              <Trans>Nouns DAO's Reward</Trans>
+            </Accordion.Header>
+            <Accordion.Body>
+              <p>
+                <Trans>
+                  For being selfless stewards of cc0, UNounders have chosen to compensate the Nouns DAO with sharing roughly 1 % of auction's proceeds.
+                  All procceds of auction for UNoun ID *88 for the first 5 years of the project (UNoun ids #88, #188, #288, #388 and so on)
+                  will be automatically sent to the Nouns DAO treasury to be vested and shared among members of the project.
+                </Trans>
+              </p>
+            </Accordion.Body>
+          </Accordion.Item>
         </Accordion>
       </Col>
     </Section>

@@ -38,7 +38,7 @@ const CurrentBid: React.FC<{ currentBid: BigNumber | BidNa; auctionEnded: boolea
           className={classes.currentBid}
           style={{ color: isCool ? 'var(--brand-cool-dark-text)' : 'var(--brand-warm-dark-text)' }}
         >
-          {currentBid === BID_N_A || (<TruncatedAmount amount={new BigNumber("0.000000")} /> && auctionEnded) ? BID_N_A : <TruncatedAmount amount={currentBid && currentBid} />}
+          {currentBid === BID_N_A || (auctionEnded && <TruncatedAmount amount={currentBid} /> === <TruncatedAmount amount={new BigNumber("0.000000")}/>) ? BID_N_A : <TruncatedAmount amount={currentBid && currentBid} />}
         </h2>
       </Col>
     </Row>
