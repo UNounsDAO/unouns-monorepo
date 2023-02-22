@@ -1,5 +1,5 @@
 {
-  "network": "mainnet",
+  "network": "homestead",
   "nounsToken": {
     "address": "0xAe28895B1cf5bF36Ded3cF2056559736Aa1a4E1B",
     "startBlock": 16684238
