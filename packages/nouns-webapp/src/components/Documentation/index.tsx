@@ -44,8 +44,8 @@ const Documentation = (props: DocumentationProps = { backgroundColor: '#FFF' }) 
           <p className={classes.aboutText}>
             <Trans>
               UNouns DAO is an expansion DAO based on {NounsLink}, UNouns = Nouns doing United Nations.
-              UNouns attempts to create community and governance that will access global issues and SDGs
-              and create better world by utilizing a treasury, that can be used by the community.
+              UNouns attempts to create community and governance that will access global issues, SDGs
+              and create better world by utilizing treasury, that can be used by the community.
               By expanding the ecosystem, UNouns DAO aims to create better world with DAO and hornorable presence for Nouns.
             </Trans>
           </p>
@@ -332,7 +332,7 @@ const Documentation = (props: DocumentationProps = { backgroundColor: '#FFF' }) 
               </p>
             </Accordion.Body>
           </Accordion.Item>
-          <Accordion.Item eventKey="7" className={classes.accordionItem}>
+          <Accordion.Item eventKey="8" className={classes.accordionItem}>
             <Accordion.Header className={classes.accordionHeader}>
               <Trans>Nouns DAO's Reward</Trans>
             </Accordion.Header>
