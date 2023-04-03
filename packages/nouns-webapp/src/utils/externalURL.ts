@@ -2,6 +2,7 @@ export enum ExternalURL {
   twitter,
   notion,
   discourse,
+  discord,
   instagram,
   nounsCenter,
 }
@@ -14,6 +15,8 @@ export const externalURL = (externalURL: ExternalURL) => {
       return 'https://separate-sundial-e59.notion.site/Explorer-UNouns-4f6263dd577647aaaf2982689f9aca80';
     case ExternalURL.discourse:
       return 'https://discourse.unouns.wtf/';
+    case ExternalURL.discord:
+      return 'https://discord.com/invite/stur9CK3f9';
     case ExternalURL.instagram:
       return 'https://www.instagram.com/unouns_dao/';
     case ExternalURL.nounsCenter:
