@@ -106,7 +106,7 @@ const UNouncilUNounContent: React.FC<{
               </Link>
               .{' '}
               <Trans>
-                The UNouncil is allocated token ending in 5 (Alp IDs #2, #12, #22 and so on) until #222,
+                The UNouncil is allocated token ending in 5 (UNoun IDs #2, #12, #22 and so on) until #222,
                 which will be 22 UNouns as total for UNouncil. It will be automatically sent to a multisig to onboard
                 NGOs/NPOs to UNouns DAO and other nounish DAOs such as Nouns DAO, Lil Nouns DAO, Gnars DAO, etc.
               </Trans>
