@@ -445,7 +445,7 @@ msgstr "毎日"
 
 #: src/components/Documentation/index.tsx
 msgid "Each time an auction is settled, the settlement transaction will also cause a new UNoun to be minted and a new 24 hour auction to begin."
-msgstr "オークションが決済される度に、決済取引によって新しいNounがミントされ、また新たに24時間のオークションが開催されます。"
+msgstr "オークションがsettle(決済)される度に、settle transactionによって新しいUNounがミントされ、また新たに24時間のオークションが開催されます。"
 
 #: src/pages/Vote/index.tsx
 msgid "Ended"
@@ -537,8 +537,8 @@ msgid "For"
 msgstr "賛成"
 
 #: src/components/NounderNounContent/index.tsx
-msgid "For this reason, we, the project's founders (‘UNounders’) have chosen to compensate ourselves with UNouns. Every 10th UNoun for the first 5 years of the project will be sent to our multisig (5/10), where it will be vested and distributed to individual UNounders."
-msgstr "その為、我々、プロジェクトの創設者 (UNounders) はNounsで自らを補償することに決めました。 プロジェクトの最初の5年間の間は、毎回10体目のNounがマルチシグ(5/10) に送られた後、個々のナウンダーズに与えられ、配布されます。"
+msgid "For this reason, we, the project's founders (‘UNounders’) have chosen to compensate ourselves with UNouns. Every 10th UNoun for the first 5 years of the project will be sent to our multisig (2/3), where it will be vested and distributed to individual UNounders."
+msgstr "その為、我々、プロジェクトの創設者 (UNounders) はUNounsで自らを補償することに決めました。 プロジェクトの最初の5年間の間は、毎回10体目のUNounがマルチシグ(2/3) に送られた後、個々のUNounderに与えられ、配布されます。"
 
 #: src/components/Footer/index.tsx
 msgid "Forums"
@@ -558,7 +558,7 @@ msgstr ""
 
 #: src/pages/Playground/index.tsx
 msgid "Generate UNouns"
-msgstr "Nounsを生成する"
+msgstr "UNounsを生成する"
 
 #: src/components/Winner/index.tsx
 #: src/components/Winner/index.tsx
@@ -1021,7 +1021,7 @@ msgstr "Noundersの報酬は、プロジェクト開始前と開始後の貢献�
 
 #: src/components/Documentation/index.tsx
 msgid "The UNouns Auction Contract will act as a self-sufficient UNoun generation and distribution mechanism, auctioning one UNoun every 24 hours, forever. 100% of auction proceeds (ETH) are automatically deposited in the UNouns DAO treasury, where they are governed by UNoun owners."
-msgstr "Nounsオークション契約は、Noun生成・分配の自律的なメカニズムとして機能するため、24時間ごとに1体のNounを永遠にオークションにかけ続けます。オークションの収益 (ETH) は100%自動的にNounの所有者によって管理されている、Nouns DAO のトレジャリーに預けられます。"
+msgstr "UNounsオークションコントラクトは、UNoun生成・分配の自律的なメカニズムとして機能するため、24時間ごとに1体のUNounを永遠にオークションにかけ続けます。オークションの収益 (ETH) は100%自動的にUNounの所有者によって管理されている、UNouns DAO のトレジャリーに預けられます。"
 
 #: src/components/Documentation/index.tsx
 msgid "The UNouns Foundation considers the veto an emergency power that should not be exercised in the normal course of business. The UNouns Foundation will veto proposals that introduce non-trivial legal or existential risks to the UNouns DAO or the UNouns Foundation, including (but not necessarily limited to) proposals that:"
@@ -1057,7 +1057,7 @@ msgstr "圧縮されたパーツは、オンチェインで効率よく1つのba
 
 #: src/pages/Playground/index.tsx
 msgid "The playground was built using the {nounsProtocolLink}. UNoun's traits are determined by the UNoun Seed. The seed was generated using unouns-assets and rendered using the {nounsSDKLink}."
-msgstr "遊び場は{nounsProtocolLink} を使用して作られており、UNounの特徴は、Nounシードによって決まります。{nounsAssetsLink} でシードを生成し、unouns-assets でレンダリングされています。"
+msgstr "遊び場は{nounsProtocolLink} を使用して作られており、UNounの特徴は、Nounシードによって決まります。unouns-assetsでシードを生成し、{nounsSDKLink}でレンダリングされています。"
 
 #: src/components/Documentation/index.tsx
 msgid "The proposal veto right was initially envisioned as a temporary solution to the problem of ‘51% attacks’ on the UNouns DAO treasury. While UNounders initially believed that a healthy distribution of UNouns would be sufficient protection for the DAO, a more complete understanding of the incentives and risks has led to general consensus within the UNounders, the UNouns Foundation, and the wider community that a more robust game-theoretic solution should be implemented before the right is removed."
@@ -1065,7 +1065,7 @@ msgstr ""
 
 #: src/components/Documentation/index.tsx
 msgid "The treasury is controlled exclusively by UNouns via governance."
-msgstr "トレジャリーは、ガバナンスを通じてUNounsが独占的に管理しています。"
+msgstr "トレジャリーは、ガバナンスを通じてUNouns holder達が管理しています。"
 
 #: src/components/Documentation/index.tsx
 msgid "There are unfortunately no algorithmic solutions for making these determinations in advance (if there were, the veto would not be required), and proposals must be considered on a case by case basis."
@@ -1077,7 +1077,7 @@ msgstr "アカウントの投票中にエラーが発生しました。"
 
 #: src/components/ProfileActivityFeed/index.tsx
 msgid "This UNoun has no activity, since it was just created. Check back soon!"
-msgstr "このNounは作成されたばかりで、動きがありません。また後ほどご確認ください！"
+msgstr "このUNounは作成されたばかりで、動きがありません。また後ほどご確認ください！"
 
 #: src/components/ProposalContent/index.tsx
 msgid "This transaction sends {0} USDC to <0/> via the DAO's PayerContract."
@@ -1247,7 +1247,7 @@ msgstr "待機"
 
 #: src/components/Documentation/index.tsx
 msgid "While settlement is most heavily incentivized for the winning bidder, it can be triggered by anyone, allowing the system to trustlessly auction UNouns as long as Ethereum is operational and there are interested bidders."
-msgstr "決済は落札者に最も大きなインセンティブが与えられるが、誰でも起動できるため、Ethereumが稼働し、関心のある入札者がいる限り、システムは第三者の介入無しでUNounsをオークションにかけることができます。"
+msgstr "settle(決済)はUNounを落札者にtransferするので落札者に最も大きなメリットが発生しますが、誰でも実行できるため、Ethereumが稼働し、新しいUNounに関心のある人がいる限り、システムは第三者の介入無しでUNounsをオークションにかけることができます。"
 
 #: src/components/DelegationCandidateInfo/index.tsx
 msgid "Will have"
@@ -1279,8 +1279,8 @@ msgid "You already have an active or pending proposal"
 msgstr "すでに有効または保留中の提案があります"
 
 #: src/components/Documentation/index.tsx
-msgid "You can experiment with off-chain UNoun generation at the {playgroundLink}."
-msgstr "{playgroundLink} にてオフチェーンのNoun生成を試すことができます。"
+msgid "More traits arts are coming soon. We're planning second, third, fourth update for trait arts to add all 193 countries, that join United Nations, to UNouns trait art. We'll add 142 countries traits arts within a year. You can experiment with off-chain UNoun generation at the {playgroundLink}."
+msgstr "{playgroundLink} にてオフチェーンのUNoun生成を試すことができます。"
 
 #: src/components/SettleManuallyBtn/index.tsx
 msgid "You can settle manually in 1 minute"
