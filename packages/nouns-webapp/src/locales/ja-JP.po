@@ -1400,11 +1400,11 @@ msgstr "{0} 票"
 
 #: src/pages/Vote/index.tsx
 msgid "{destructiveStateButtonAction} Proposal ⌐◧-◧"
-msgstr "{destructiveStateButtonAction} 提案の順番 ⌐◧-◧"
+msgstr "提案を{moveStateButtonAction}する ⌐◧-◧"
 
 #: src/pages/Vote/index.tsx
 msgid "{moveStateButtonAction} Proposal ⌐◧-◧"
-msgstr "{moveStateButtonAction} 提案の順番 ⌐◧-◧"
+msgstr "提案を{moveStateButtonAction}する ⌐◧-◧"
 
 #: src/components/DelegationCandidateVoteCountInfo/index.tsx
 msgid "{voteCount} Vote"
