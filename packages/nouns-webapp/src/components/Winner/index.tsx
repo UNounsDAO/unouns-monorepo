@@ -28,6 +28,8 @@ const Winner: React.FC<WinnerProps> = props => {
 
   const activeLocale = useActiveLocale();
 
+  const saveUNouns = "0x93D788F6EE2D47C82BC075EA314D941d836093B6"
+
   const nonNounderNounContent = isWinnerYou ? (
     <Row className={classes.youSection}>
       <Col lg={activeLocale === 'ja-JP' ? 8 : 4} className={classes.youCopy}>
@@ -66,7 +68,7 @@ const Winner: React.FC<WinnerProps> = props => {
       )}
     </Row>
   ) : (
-    <ShortAddress size={40} address={winner} avatar={true} />
+    <ShortAddress size={40} address={winner ? winner : saveUNouns} avatar={true} />
   );
 
   const nounderNounContent = (
